@@ -35,55 +35,54 @@ import javax.swing.JPanel;
  *
  * @author Diego
  */
- 
- /**
- ChartForm é a classe padrão utilizada a geração de gráficos.
- Com esta classe você terá uma janela para observação do gráfico,
- mas não um gráfico já criado, para isso é necessário extender esta classe
- e depois criar algum gráfico efetivo com a lib JFreeChart.
- Na classe Charts deste projeto, há alguns métodos que retornam um BufferedImage(Imagem em memória),
- que na verdade é o gráfico em forma de pixels. Assim sendo, tendo esta imagem do gráfico,
- pode alterar a janela de visualização com o objetivo de aprendizado, mas se está adicionando
- um novo gráfico no sistema, poderá sem problemas algum continuar utilizando esta janela de observação,
- invocando o método showChart, passando o BufferedImage e a resolução.
+
+/**
+ * ChartForm é a classe padrão utilizada a geração de gráficos. Com esta classe
+ * você terá uma janela para observação do gráfico, mas não um gráfico já
+ * criado, para isso é necessário extender esta classe e depois criar algum
+ * gráfico efetivo com a lib JFreeChart. Na classe Charts deste projeto, há
+ * alguns métodos que retornam um BufferedImage(Imagem em memória), que na
+ * verdade é o gráfico em forma de pixels. Assim sendo, tendo esta imagem do
+ * gráfico, pode alterar a janela de visualização com o objetivo de aprendizado,
+ * mas se está adicionando um novo gráfico no sistema, poderá sem problemas
+ * algum continuar utilizando esta janela de observação, invocando o método
+ * showChart, passando o BufferedImage e a resolução.
  */
-public class ChartForm extends JDialog{
-    
-    //Quadro de observação do gráfico.
-    final private JPanel pnlPanel = new JPanel()
-    {
-        @Override 
-        public void paint(Graphics g)
-        {
-            super.paint(g);
-            g.drawImage(image, 0, 0, null);
-        }
-    };
-    
-    /**Construtor principal
-    */
-    public ChartForm()
-    {
-        setModal(false);
-        pnlPanel.setLayout(new BorderLayout());
-        Container contentPane = this.getContentPane();
-        contentPane.setLayout(new BorderLayout());
-        contentPane.add(pnlPanel, BorderLayout.CENTER);
-    }
-    
-    private BufferedImage image = null;
-    
-    /**Utilize este método para criar um gráfico, passando os parâmetros.
-    O BufferedImage é o gráfico em formato de pixels.
-    */
-    public void showChart(final int w, final int h, BufferedImage image)
-    {
-        this.image = image;
-        pnlPanel.setPreferredSize(new Dimension(w, h));
-        this.setSize(w, h + 40);
-        this.setLocationRelativeTo(null);
-        this.repaint();
-        pnlPanel.repaint();
-        this.setVisible(true);
-    }
+public class ChartForm extends JDialog {
+
+	// Quadro de observação do gráfico.
+	final private JPanel pnlPanel = new JPanel() {
+		@Override
+		public void paint(Graphics g) {
+			super.paint(g);
+			g.drawImage(image, 0, 0, null);
+		}
+	};
+
+	/**
+	 * Construtor principal
+	 */
+	public ChartForm() {
+		setModal(false);
+		pnlPanel.setLayout(new BorderLayout());
+		Container contentPane = this.getContentPane();
+		contentPane.setLayout(new BorderLayout());
+		contentPane.add(pnlPanel, BorderLayout.CENTER);
+	}
+
+	private BufferedImage image = null;
+
+	/**
+	 * Utilize este método para criar um gráfico, passando os parâmetros. O
+	 * BufferedImage é o gráfico em formato de pixels.
+	 */
+	public void showChart(final int w, final int h, BufferedImage image) {
+		this.image = image;
+		pnlPanel.setPreferredSize(new Dimension(w, h));
+		this.setSize(w, h + 40);
+		this.setLocationRelativeTo(null);
+		this.repaint();
+		pnlPanel.repaint();
+		this.setVisible(true);
+	}
 }

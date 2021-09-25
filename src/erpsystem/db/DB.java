@@ -53,7 +53,7 @@ public class DB {
                 //Abaixo há o código responsável por obter uma conexão com o banco de dados
                 con = DriverManager.getConnection( "jdbc:mysql://localhost/db", 
                                                     "root", 
-                                                    "admin" );
+                                                    "" );
                 //Para não permitir que o gerenciador da conexão faça auto commits,
                 //Isso, porque se um commit é feito na hora errada, pode ocorrer problemas,
                 //Considero melhor o próprio programador fazer o commit manualmente.
