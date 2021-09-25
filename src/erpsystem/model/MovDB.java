@@ -22,9 +22,8 @@
  * THE SOFTWARE.
  */
 
-package erpsystem.db;
+package erpsystem.model;
 
-import erpsystem.Log;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -32,6 +31,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import erpsystem.util.DB;
+import erpsystem.util.Log;
 
 /**
  *

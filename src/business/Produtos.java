@@ -24,15 +24,15 @@
 
 package business;
 
-import erpsystem.db.ProdutosDB;
-import erpsystem.db.Produto;
+import erpsystem.model.Produto;
+import erpsystem.model.ProdutosDB;
 
 /**
  *
  * @author Diego
  */
 public class Produtos {
-    public static boolean add(erpsystem.db.Produto prod)
+    public static boolean add(erpsystem.model.Produto prod)
     {
         return ProdutosDB.add(prod);
     }

@@ -24,14 +24,15 @@
 
 package erpsystem.forms;
 
-import erpsystem.Util;
-import erpsystem.db.Estoque;
-import erpsystem.db.EstoqueDB;
+import erpsystem.controller.EstoqueController;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableModel;
 
-import erpsystem.db.Produto;
-import erpsystem.db.ProdutosDB;
+import erpsystem.model.Estoque;
+import erpsystem.model.Produto;
+import erpsystem.model.ProdutosDB;
+import erpsystem.util.Util;
+
 import java.awt.event.KeyEvent;
         
 /**
@@ -208,7 +209,8 @@ public class ConsultaProdutoView extends javax.swing.JDialog {
             double precoVenda  = prod.getPrecoVenda();
             
             //Obtendo o estoque do produto.
-            Estoque estoque    = EstoqueDB.find(cod);
+            EstoqueController estoqueController = new EstoqueController();
+            Estoque estoque    = estoqueController.find(cod);
             int estoqueQt      = estoque.getQt();
             
             //Fixando as informações na tabela.   

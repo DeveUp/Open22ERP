@@ -22,26 +22,27 @@
  * THE SOFTWARE.
  */
 
-package erpsystem.db;
+package erpsystem.model;
+
+import java.io.Serializable;
 
 /**
- *
  * @author Diego
+ * @contributors - GitHub - SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  */
-public class Pessoa {
-    private int codigo;
-    
+public class Pessoa implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	private int codigo;
     private String nome;
-    
     private String cpf;
-    
     private String email;
-    
     private String localizacao;
-    
     private String telefone;
     
-    
+    public Pessoa() {
+	}
 
     public int getCodigo() {
         return codigo;
@@ -67,8 +68,6 @@ public class Pessoa {
         return telefone;
     }
 
-    
-    
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }

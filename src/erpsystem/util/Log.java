@@ -22,39 +22,39 @@
  * THE SOFTWARE.
  */
 
-package erpsystem;
+package erpsystem.util;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.io.Serializable;
 import java.nio.charset.Charset;
 
 /**
- *
- * @author Diego
+ * @author Diego Geronimo Onofre.
+ * @channel https://www.youtube.com/user/cursostd.
+ * @facebook https://www.facebook.com/diegogeronimoonofre.
+ * @Github https://github.com/DiegoGeronimoOnofre.
+ * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  */
- 
- //Este arquivo foi criar para facilitar a geração de logs no sistema
- 
-public class Log {
-    private static final Charset encoding = Charset.forName("UTF8");
+public class Log implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	private static final Charset encoding = Charset.forName("UTF8");
     
     private static void persist(Exception e)
     {
         String path = erpsystem.ERPSystem.getWorkDir();
         final char sep = File.separatorChar;
         File logDir = new File(path + sep + "logs");
-        
         if ( !logDir.exists() ){
             if (! logDir.mkdir() ){
                 return;
             }
         }
-        
         final long time = System.currentTimeMillis();
         String fileName = String.valueOf(logDir.getAbsolutePath() + sep + time);
         File newFile = new File(fileName);
-
         try{
             if ( newFile.createNewFile() ){
                 String filePath = newFile.getAbsolutePath();
@@ -78,7 +78,8 @@ public class Log {
         }
     }
     
-    private static String readException(File file)
+    @SuppressWarnings("unused")
+	private static String readException(File file)
     {
         try{
             RandomAccessFile f = new RandomAccessFile(file, "rw");
@@ -104,14 +105,18 @@ public class Log {
         return s;
     }
     
-    //Este método pode ser usado para mostrar uma mensagem na saída.
+    /**
+     * Este método pode ser usado para mostrar uma mensagem na saída.
+     */
     public static void log(Object s)
     {
         System.out.println(s);
     }
-    
-    //Este método pode ser usado para mostrar uma mensagem na saída, mas
-    //Também armazena esta mensagem, para posteriormente seja possível ter acesso a ela.
+      
+    /**
+     * Este método pode ser usado para mostrar uma mensagem na saída, mas 
+     * Também armazena esta mensagem, para posteriormente seja possível ter acesso a ela.
+     */
     public static void log(Exception e)
     {
         System.out.println(e.toString());

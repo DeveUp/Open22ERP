@@ -22,15 +22,17 @@
  * THE SOFTWARE.
  */
 
-package erpsystem.db;
+package erpsystem.model;
 
-import erpsystem.Log;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import erpsystem.util.DB;
+import erpsystem.util.Log;
 
 /**
  *
@@ -70,8 +72,8 @@ public class MovProdDB {
                 estoque.setQt(qt);
             else//venda
                 estoque.setQt(-qt);
-                
-            boolean result = EstoqueDB.addEstoque(estoque);    
+             Estoque et = new Estoque();
+            boolean result = et.add(estoque);    
             
             if ( result ){
                 con.commit();

@@ -21,23 +21,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package erpsystem.db;
+package erpsystem.model;
+
+import java.io.Serializable;
 
 /**
- *
  * @author Diego
+ * @contributors - GitHub - SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  */
-public class Produto {
-    private int codigo;
-    
-    private String codBarras;
-    
-    private String descricao;
+public class Produto implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 
+	private int codigo;
+    private String codBarras;
+    private String descricao;
     private double precoCompra;
-    
     private double precoVenda;
     
+    public Produto() {
+	}
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;

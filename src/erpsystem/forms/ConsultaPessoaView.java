@@ -24,9 +24,10 @@
 
 package erpsystem.forms;
 
-import erpsystem.Util;
-import erpsystem.db.PessoasDB;
-import erpsystem.db.Pessoa;
+import erpsystem.model.Pessoa;
+import erpsystem.model.PessoasDB;
+import erpsystem.util.Util;
+
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.ListSelectionModel;

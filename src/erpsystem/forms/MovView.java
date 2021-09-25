@@ -24,18 +24,19 @@
 
 package erpsystem.forms;
 
-import erpsystem.Log;
-import erpsystem.Util;
-import erpsystem.db.PayMethod;
+import erpsystem.controller.EstoqueController;
+import erpsystem.model.Estoque;
+import erpsystem.model.MovProd;
+import erpsystem.model.PayMethod;
+import erpsystem.model.Pessoa;
+import erpsystem.model.PessoasDB;
+import erpsystem.model.Produto;
+import erpsystem.model.ProdutosDB;
+import erpsystem.util.Log;
+import erpsystem.util.Util;
 
-import static erpsystem.Util.*;
-import erpsystem.db.Estoque;
-import erpsystem.db.EstoqueDB;
-import erpsystem.db.MovProd;
-import erpsystem.db.Produto;
-import erpsystem.db.PessoasDB;
-import erpsystem.db.Pessoa;
-import erpsystem.db.ProdutosDB;
+import static erpsystem.util.Util.*;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -110,7 +111,7 @@ public class MovView extends javax.swing.JFrame {
     final void fillPayMethods()
     {
         cbxPayMethod.removeAllItems();
-        java.util.List<erpsystem.db.PayMethod> pmList = erpsystem.db.PayMethodDB.findAll();
+        java.util.List<erpsystem.model.PayMethod> pmList = erpsystem.model.PayMethodDB.findAll();
         final int len = pmList.size();
         
         for ( int i = 0; i < len; i++ ){
@@ -614,7 +615,8 @@ public class MovView extends javax.swing.JFrame {
     //considerando a quantidade informada no parâmetro paramQt. Se for suficiente, 
     //o método retorna true, senão retorna false.
     private static boolean temEstoque(int code, int paramQt){
-        Estoque estoque = EstoqueDB.find(code);
+    	EstoqueController estoqueController = new EstoqueController();
+        Estoque estoque = estoqueController.find(code);
         int qt = estoque.getQt();
         
         if ( qt - paramQt < 0 )

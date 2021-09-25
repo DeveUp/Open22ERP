@@ -24,9 +24,11 @@
 
 package erpsystem.forms;
 
-import erpsystem.Util;
-import static erpsystem.Util.*;
-import erpsystem.db.Pessoa;
+import erpsystem.model.Pessoa;
+import erpsystem.util.Util;
+
+import static erpsystem.util.Util.*;
+
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 

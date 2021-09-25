@@ -23,8 +23,9 @@
  */
 package erpsystem.db.chart;
 
-import erpsystem.Log;
-import erpsystem.db.DB;
+import erpsystem.util.DB;
+import erpsystem.util.Log;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;

@@ -21,29 +21,49 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package erpsystem.db;
+package erpsystem.model;
 
-import erpsystem.Log;
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import erpsystem.util.DB;
+import erpsystem.util.Log;
+
 /**
- *
  * @author Diego
+ * @contributors - GitHub - SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  */
+public class Estoque implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 
-public class EstoqueDB {
-    public static boolean addEstoque(Estoque estoqueAdd)
+	private int codProd;
+    private int qt;
+    
+	///////////////////////////////////////////////////////
+	// Builders
+	///////////////////////////////////////////////////////
+    public Estoque() {
+    	this(-1, -1);
+	}
+    
+	public Estoque(int codProd, int qt) {
+		this.codProd = codProd;
+		this.qt = qt;
+	}
+
+	///////////////////////////////////////////////////////
+	// Method
+	///////////////////////////////////////////////////////
+    public boolean add(Estoque estoque)
     {
-        int codProd = estoqueAdd.getCodProd();
-        int qt = estoqueAdd.getQt();       
+        this.codProd = estoque.getCodProd();
+        int qt = estoque.getQt();       
         Connection con = DB.getConnection();
-        
         try{
-            
             Statement st = con.createStatement();          
             String update = " insert "
                           + " into estoque "
@@ -54,19 +74,15 @@ public class EstoqueDB {
             st.executeUpdate(update);
             con.commit();
             return true;
-
         }
         catch ( SQLException e ){
             try{
-                Estoque estoque = find(codProd);
-                
-                if ( estoque != null ){
+                Estoque et = find(codProd);
+                if (et != null ){
                     Boolean exists = exists(codProd);
-                    
                     if ( exists != null){
                         if ( exists ){                           
-                            
-                            final int nowQt = estoque.getQt();
+                            final int nowQt = et.getQt();
                             Statement st = con.createStatement();          
                             String update = " update "
                                           + " estoque "
@@ -86,15 +102,37 @@ public class EstoqueDB {
                 else{
                     System.out.println("Possibilidade: 521845");
                 }
-      
             }
             catch ( Exception ee ){
                 Log.log(e);
             }
         }
-        
         return false;
-    }    
+    }  
+    
+    public Estoque find(int code)
+    {
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String update = " SELECT estoque.cod_prod AS 'cod', estoque.qt AS 'qt'"
+                          + " FROM   estoque "
+                          + " WHERE  estoque.cod_prod = " + code;
+            
+            ResultSet rs = st.executeQuery(update);
+            if (rs.next()){
+            	this.setCodProd(rs.getInt("cod"));
+            	this.setQt(rs.getInt("qt"));
+                return this;
+            }
+            else
+                return null;
+        }
+        catch ( Exception e ){
+            Log.log(e);
+            return null;
+        }        
+    } 
     
     public static Boolean exists(int cod)
     {
@@ -114,32 +152,22 @@ public class EstoqueDB {
         } 
     }
     
-    public static Estoque find(int code)
-    {
-        try{
-            Connection con = DB.getConnection();
-            Statement st = con.createStatement();
-            String update = " select estoque.cod_prod as 'cod',"
-                          + "        estoque.qt       as 'qt'"
-                          + " from estoque "
-                          + " where estoque.cod_prod = " + code;
-            
-            ResultSet rs = st.executeQuery(update);
-            
-            if (rs.next()){
-                int cod = rs.getInt("cod");
-                int qt   = rs.getInt("qt");
-                Estoque estoque = new Estoque();
-                estoque.setCodProd(cod);
-                estoque.setQt(qt);
-                return estoque;
-            }
-            else
-                return null;
-        }
-        catch ( Exception e ){
-            Log.log(e);
-            return null;
-        }        
-    }    
+	///////////////////////////////////////////////////////
+	// Getter and Setters
+	///////////////////////////////////////////////////////
+    public int getCodProd() {
+        return codProd;
+    }
+
+    public void setCodProd(int codProd) {
+        this.codProd = codProd;
+    }
+
+    public int getQt() {
+        return qt;
+    }
+
+    public void setQt(int qt) {
+        this.qt = qt;
+    }
 }

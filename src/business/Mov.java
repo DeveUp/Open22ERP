@@ -24,7 +24,10 @@
 
 package business;
 
-import erpsystem.db.*;
+import erpsystem.model.MovDB;
+import erpsystem.model.MovProd;
+import erpsystem.model.MovProdDB;
+import erpsystem.util.*;
 
 /**
  *
@@ -45,7 +48,7 @@ public class Mov {
                                     java.util.List<MovProd> mpList)
     {
         synchronized ( lock ){
-            erpsystem.db.Mov mov = new erpsystem.db.Mov();
+            erpsystem.model.Mov mov = new erpsystem.model.Mov();
             mov.setCod_cli(codCli);
             mov.setPayMethodCode(payMethodCode);
             mov.setMovType(movTypeCode);

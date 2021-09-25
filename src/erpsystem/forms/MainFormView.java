@@ -27,8 +27,9 @@ package erpsystem.forms;
 import chartforms.ChartForm001;
 import chartforms.ChartForm002;
 import erpsystem.ERPSystem;
-import erpsystem.Log;
-import erpsystem.Util;
+import erpsystem.util.Log;
+import erpsystem.util.Util;
+
 import java.lang.reflect.Method;
 import java.net.URI;
 import java.net.URLClassLoader;

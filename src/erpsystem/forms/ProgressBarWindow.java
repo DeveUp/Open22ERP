@@ -23,12 +23,13 @@
  */
 package erpsystem.forms;
 
-import erpsystem.Util;
 import java.awt.Point;
 import java.awt.Window;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JProgressBar;
+
+import erpsystem.util.Util;
 
 /**
  *

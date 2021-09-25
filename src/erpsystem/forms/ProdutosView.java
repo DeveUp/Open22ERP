@@ -24,12 +24,14 @@
 
 package erpsystem.forms;
 
-import erpsystem.Log;
-import erpsystem.Util;
-import static erpsystem.Util.*;
-import erpsystem.db.Estoque;
-import erpsystem.db.EstoqueDB;
-import erpsystem.db.Produto;
+import erpsystem.controller.EstoqueController;
+import erpsystem.model.Estoque;
+import erpsystem.model.Produto;
+import erpsystem.util.Log;
+import erpsystem.util.Util;
+
+import static erpsystem.util.Util.*;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
@@ -289,8 +291,8 @@ public class ProdutosView extends javax.swing.JFrame {
                     Estoque estoque = new Estoque();
                     estoque.setCodProd(codProd);
                     estoque.setQt(0);
-                    
-                    if (!EstoqueDB.addEstoque(estoque)){
+                    EstoqueController estoqueController = new EstoqueController();
+                    if (!estoqueController.add(estoque)){
                         try{
                             throw new Exception("Problema ao adicionar estoque para o "
                                               + "produto quando o mesmo é cadastrado");

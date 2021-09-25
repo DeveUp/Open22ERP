@@ -23,13 +23,15 @@
  */
 package erpsystem.forms;
 
-import erpsystem.Log;
-import erpsystem.Util;
-import static erpsystem.Util.msg;
-import erpsystem.db.Estoque;
-import erpsystem.db.EstoqueDB;
-import erpsystem.db.Produto;
-import erpsystem.db.ProdutosDB;
+import erpsystem.controller.EstoqueController;
+import erpsystem.model.Estoque;
+import erpsystem.model.Produto;
+import erpsystem.model.ProdutosDB;
+import erpsystem.util.Log;
+import erpsystem.util.Util;
+
+import static erpsystem.util.Util.msg;
+
 import java.awt.event.KeyEvent;
 
 /**
@@ -246,8 +248,9 @@ public class EstoqueView extends javax.swing.JDialog {
             int cod = Integer.parseInt(codProd);
             int intQt = Integer.parseInt(qt);
             estoque.setCodProd(cod);
-            estoque.setQt(intQt);           
-            boolean result = EstoqueDB.addEstoque(estoque);
+            estoque.setQt(intQt);         
+            EstoqueController estoqueController = new EstoqueController();
+            boolean result = estoqueController.add(estoque);
             
             if ( result ){
                 javax.swing.JOptionPane.showMessageDialog(null, "Estoque atualizado com sucesso.");

@@ -21,32 +21,56 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package erpsystem.db;
+package erpsystem.model;
+
+import java.io.Serializable;
 
 /**
- *
  * @author Diego
+ * @contributors - GitHub - SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  */
+public class Mov implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 
-public class Estoque {
-    private int codProd;
+	private int codigo;
+    private int cod_cli;
+    private int payMethodCode;
+    private int movType;
     
-    private int qt;
+    public Mov() {
+	}
 
-    public int getCodProd() {
-        return codProd;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setCodProd(int codProd) {
-        this.codProd = codProd;
+    public int getCod_cli() {
+        return cod_cli;
     }
 
-    public int getQt() {
-        return qt;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
-    public void setQt(int qt) {
-        this.qt = qt;
+    public void setCod_cli(int cod_cli) {
+        this.cod_cli = cod_cli;
     }
+
+    public int getPayMethodCode() {
+        return payMethodCode;
+    }
+
+    public void setPayMethodCode(int payMethodCode) {
+        this.payMethodCode = payMethodCode;
+    }
+
+    public int getMovType() {
+        return movType;
+    }
+
+    public void setMovType(int movType) {
+        this.movType = movType;
+    }
+    
 }

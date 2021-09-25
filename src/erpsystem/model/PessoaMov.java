@@ -21,46 +21,66 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package erpsystem.db;
+
+package erpsystem.model;
+
+import java.io.Serializable;
+import java.sql.Date;
 
 /**
- *
  * @author Diego
+ * @contributors - GitHub - SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  */
-public class PayMethod {
-    private int cod;
+public class PessoaMov implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	private int movCod; 
+    private String clientName;
+    private Date data;
+    private int type; 
+    private int payMethod;
     
-    private String descricao;
+    public PessoaMov() {
+	}
     
-    private int limite;
-
-    public int getCod() {
-        return cod;
+    public int getMovCod() {
+        return movCod;
     }
 
-    public void setCod(int cod) {
-        this.cod = cod;
+    public String getClientName() {
+        return clientName;
+    } 
+
+    public void setMovCod(int movCod) {
+        this.movCod = movCod;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public Date getData() {
+        return data;
     }
 
-    public int getLimite() {
-        return limite;
+    public void setData(Date data) {
+        this.data = data;
     }
 
-    public void setLimite(int limite) {
-        this.limite = limite;
+    public int getType() {
+        return type;
     }
-    
-    @Override
-    public String toString()
-    {
-        return descricao.trim();
+
+    public void setType(int type) {
+        this.type = type;
     }
+
+    public int getPayMethod() {
+        return payMethod;
+    }
+
+    public void setPayMethod(int payMethod) {
+        this.payMethod = payMethod;
+    } 
 }

@@ -24,11 +24,12 @@
 
 package erpsystem.forms;
 
-import erpsystem.Log;
-import erpsystem.Util;
-import erpsystem.db.PessoaMov;
-import erpsystem.db.MovProd;
-import erpsystem.db.MovProdDB;
+import erpsystem.model.MovProd;
+import erpsystem.model.MovProdDB;
+import erpsystem.model.PessoaMov;
+import erpsystem.util.Log;
+import erpsystem.util.Util;
+
 import java.awt.event.KeyEvent;
 import java.util.Calendar;
 import javax.swing.JFrame;
@@ -303,7 +304,7 @@ public class ConsultaMovView extends javax.swing.JFrame {
             final int type = cm.getType();
             final int payMethod = cm.getPayMethod();
             
-            erpsystem.db.PayMethod payMethodObj = erpsystem.db.PayMethodDB.find(payMethod);
+            erpsystem.model.PayMethod payMethodObj = erpsystem.model.PayMethodDB.find(payMethod);
             
             if (payMethodObj != null){
                 String payMethodValue = payMethodObj.getDescricao();
@@ -365,7 +366,7 @@ public class ConsultaMovView extends javax.swing.JFrame {
     {
         initTabs();
         String clientName = tfdClient.getText();
-        java.util.List<erpsystem.db.PessoaMov> cmList = business.ConsultaMov.findClientMov(clientName);
+        java.util.List<erpsystem.model.PessoaMov> cmList = business.ConsultaMov.findClientMov(clientName);
         
         if ( cmList != null )
             fillMovs(cmList);
@@ -382,7 +383,7 @@ public class ConsultaMovView extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRow = tblMovs.getSelectedRow();
         int movCod = (int) tblMovs.getModel().getValueAt( selectedRow, MOV_COD);
-        java.util.List<erpsystem.db.MovProd> mpList = MovProdDB.findProds(movCod);
+        java.util.List<erpsystem.model.MovProd> mpList = MovProdDB.findProds(movCod);
         
         if ( mpList != null ){
             fillProds(mpList);

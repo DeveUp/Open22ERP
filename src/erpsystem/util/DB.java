@@ -22,41 +22,41 @@
  * THE SOFTWARE.
  */
 
-package erpsystem.db;
+package erpsystem.util;
 
-import erpsystem.Log;
+import java.io.Serializable;
 import java.sql.*;
 
 /**
- *
- * @author Diego
+ * @author Diego Geronimo Onofre.
+ * @channel https://www.youtube.com/user/cursostd.
+ * @facebook https://www.facebook.com/diegogeronimoonofre.
+ * @Github https://github.com/DiegoGeronimoOnofre.
+ * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  */
-public class DB {
-    static {
+public class DB implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+    private static Connection con = null;
+
+	
+	static {
         try{
-            //Carregando o drive. Este drive é o intermediário 
-            //entre a aplicação e o servidor de banco de dados.
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName(Variable.ERP_SYSTEM_DB_DRIVER);
         }
         catch ( Exception e ){
             Log.log(e);
         }			
     }
     
-    private static Connection con = null;
-    
-    public static Connection getConnection()
-    {
+	/**
+	 * Method that allows the connection to the database.
+	 * @return The connection.
+	 */
+    public static Connection getConnection(){
         try{
-            
             if ( con == null ){
-                //Abaixo há o código responsável por obter uma conexão com o banco de dados
-                con = DriverManager.getConnection( "jdbc:mysql://localhost/db", 
-                                                    "root", 
-                                                    "" );
-                //Para não permitir que o gerenciador da conexão faça auto commits,
-                //Isso, porque se um commit é feito na hora errada, pode ocorrer problemas,
-                //Considero melhor o próprio programador fazer o commit manualmente.
+                con = DriverManager.getConnection(Variable.ERP_SYSTEM_DB_URL, Variable.ERP_SYSTEM_DB_USER, Variable.ERP_SYSTEM_DB_PASSWORD);
                 con.setAutoCommit(false);
                 return con;
             }
@@ -64,7 +64,6 @@ public class DB {
                 return con;
         }
         catch ( Exception e ){
-            //Gerando um log se algum problema ocorrer.
             Log.log(e);
             return null;
         }

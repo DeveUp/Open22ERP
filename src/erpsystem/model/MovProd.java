@@ -22,69 +22,72 @@
  * THE SOFTWARE.
  */
 
-package erpsystem.db;
+package erpsystem.model;
 
-import java.sql.Date;
+import java.io.Serializable;
 
 /**
- *
  * @author Diego
+ * @contributors - GitHub - SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  */
-
-public class PessoaMov {
+public class MovProd implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	private int codMov;
+    private int codProd;
+    private String desc; 
+    private double preco;
+    private int qt;
+    private double total;
     
-    private int movCod;
+    public MovProd() {
+	}
     
-    private String clientName;
-    
-    private Date data;
-
-    private int type;
-    
-    private int payMethod;
-    
-    public int getMovCod() {
-        return movCod;
+    public int getCodMov() {
+        return codMov;
     }
 
-    public String getClientName() {
-        return clientName;
+    public int getCodProd() {
+        return codProd;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public int getQt() {
+        return qt;
+    }
+
+    public double getTotal() {
+        return total;
     }
     
-
-    public void setMovCod(int movCod) {
-        this.movCod = movCod;
+    public void setCodMov(int codMov) {
+        this.codMov = codMov;
     }
 
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
+    public void setCodProd(int codProd) {
+        this.codProd = codProd;
     }
 
-    public Date getData() {
-        return data;
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setQt(int qt) {
+        this.qt = qt;
     }
 
-    public int getType() {
-        return type;
+    public void setTotal(double total) {
+        this.total = total;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public String getDesc() {
+        return desc;
     }
 
-    public int getPayMethod() {
-        return payMethod;
-    }
-
-    public void setPayMethod(int payMethod) {
-        this.payMethod = payMethod;
-    }
-    
-    
-    
-    
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }   
 }

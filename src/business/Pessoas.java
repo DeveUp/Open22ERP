@@ -24,7 +24,7 @@
 
 package business;
 
-import erpsystem.db.PessoasDB;
+import erpsystem.model.PessoasDB;
 
 /**
  *
@@ -32,7 +32,7 @@ import erpsystem.db.PessoasDB;
  */
 
 public class Pessoas {
-    public static boolean add(erpsystem.db.Pessoa cli)
+    public static boolean add(erpsystem.model.Pessoa cli)
     {
         return PessoasDB.add(cli);
     }

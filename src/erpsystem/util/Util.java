@@ -22,30 +22,38 @@
  * THE SOFTWARE.
  */
 
-package erpsystem;
+package erpsystem.util;
 
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.io.Serializable;
+
 import static javax.swing.JOptionPane.*;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
- *
- * @author Diego
+ * @author Diego Geronimo Onofre.
+ * @channel https://www.youtube.com/user/cursostd.
+ * @facebook https://www.facebook.com/diegogeronimoonofre.
+ * @Github https://github.com/DiegoGeronimoOnofre.
+ * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
+ * Este arquivo foi criado para suprir necessidades básicas.
+ * Métodos que podem serem utilizados para testar se uma String é um número e outros.
  */
- 
- //Este arquivo foi criado para suprir necessidades básicas.
- //Métodos que podem serem utilizados para testar se uma String é um número e outros.
-public class Util {
+public class Util implements Serializable{
 
-    public static void msg(String s)
+	private static final long serialVersionUID = 1L;
+
+	public static void msg(String s)
     {
         showMessageDialog(null, s);
     }
     
-    //Verifica se é um valor inteiro válido.
+	/**
+	 * Verifica se é um valor inteiro válido.
+	 */
     public static boolean isInt(String value)
     {
         try{
@@ -57,7 +65,9 @@ public class Util {
         }
     }
     
-    //Verifica se é um Double válido.
+    /**
+	 * Verifica se é um Double válido.
+     */
     public static boolean isDouble(String value)
     {
         try{
@@ -69,8 +79,9 @@ public class Util {
         }
     }
     
-    /**Utilize este método para ter o Point que adiciona o a Janela no centro.
-    */
+    /**
+     * Utilize este método para ter o Point que adiciona o a Janela no centro.
+     */
     public static Point getCenterPoint( final int w, final int h )
     {
         Toolkit tk = Toolkit.getDefaultToolkit();
@@ -80,8 +91,9 @@ public class Util {
         return new Point( x, y );
     }     
     
-    /** Verifica se o char é de valor de preço.
-    */
+    /** 
+     * Verifica se o char é de valor de preço.
+     */
     public static boolean isValidPriceChar(char charValue)
     {
         String s =  String.valueOf(charValue);

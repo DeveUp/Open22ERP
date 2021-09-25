@@ -21,76 +21,52 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package erpsystem.model;
 
-package erpsystem.db;
+import java.io.Serializable;
 
 /**
- *
  * @author Diego
+ * @contributors - GitHub - SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  */
-public class MovProd {
-    private int codMov;
+public class PayMethod implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	private int cod;
+    private String descricao;
+    private int limite;
     
-    private int codProd;
-    
-    private String desc;
-    
-    private double preco;
-    
-    private int qt;
-    
-    private double total;
-    
-    
+    public PayMethod() {
+	}
 
-    public int getCodMov() {
-        return codMov;
+    public int getCod() {
+        return cod;
     }
 
-    public int getCodProd() {
-        return codProd;
+    public void setCod(int cod) {
+        this.cod = cod;
     }
 
-    public double getPreco() {
-        return preco;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public int getQt() {
-        return qt;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public double getTotal() {
-        return total;
+    public int getLimite() {
+        return limite;
     }
 
-    
-    public void setCodMov(int codMov) {
-        this.codMov = codMov;
-    }
-
-    public void setCodProd(int codProd) {
-        this.codProd = codProd;
-    }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
-
-    public void setQt(int qt) {
-        this.qt = qt;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setLimite(int limite) {
+        this.limite = limite;
     }
     
-    
+    @Override
+    public String toString()
+    {
+        return descricao.trim();
+    }
 }
