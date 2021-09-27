@@ -25,14 +25,27 @@
 package erpsystem.model;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import erpsystem.util.DB;
+import erpsystem.util.Log;
 
 /**
- * @author Diego
- * @contributors - GitHub - SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
+ * @author Diego Geronimo Onofre.
+ * @channel https://www.youtube.com/user/cursostd.
+ * @facebook https://www.facebook.com/diegogeronimoonofre.
+ * @Github https://github.com/DiegoGeronimoOnofre.
+ * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  */
 public class MovProd implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	
 	private int codMov;
     private int codProd;
     private String desc; 
@@ -40,9 +53,89 @@ public class MovProd implements Serializable{
     private int qt;
     private double total;
     
+	///////////////////////////////////////////////////////
+	// Builders
+	///////////////////////////////////////////////////////
     public MovProd() {
 	}
     
+	///////////////////////////////////////////////////////
+	// Method
+	///////////////////////////////////////////////////////
+    public boolean add(MovProd movProd, int movType)
+    {
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String update = " INSERT "
+                          + "   INTO mov_prod "
+                          + "   VALUES(" + movProd.getCodMov()  + ","
+                                       	 + movProd.getCodProd() + ","
+                                       	 + movProd.getPreco()   + ","
+                                       	 + movProd.getQt()      + ","
+                                       	 + movProd.getTotal()
+                          + ")";   
+            st.executeUpdate(update);
+            //Atualizando o estoque.
+            Estoque estoque = new Estoque();
+            estoque.setCodProd(movProd.getCodProd());
+            if ( movType == 1 ) //compra
+                estoque.setQt(movProd.getQt());
+            else //venda
+                estoque.setQt(-movProd.getQt());
+             Estoque et = new Estoque();
+            boolean result = et.add(estoque);    
+            if ( result ){
+                con.commit();
+                return true;
+            }
+            else{
+                con.rollback();
+                return false;
+            }   
+        }
+        catch ( SQLException e ){
+            Log.log(e);
+            return false;
+        }
+    }
+    
+    public List<MovProd> findProds(int codMov)
+    {
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String update = " SELECT mov_prod.cod_prod            AS 'codprod',"
+                          + "        produtos.descricao           AS 'desc',"
+                          + "        mov_prod.preco               AS 'preco',"
+                          + "        mov_prod.qt                  AS 'qt',"
+                          + "        mov_prod.qt * mov_prod.preco AS 'total'"
+                          + " FROM mov_prod, produtos "
+                          + " WHERE mov_prod.cod_prod = produtos.codigo "
+                          + "   AND mov_prod.cod_mov = " + codMov;
+            
+            ResultSet rs = st.executeQuery(update);
+            List<MovProd> mpList = new ArrayList<>();
+            while (rs.next()){
+                MovProd mp = new MovProd();   
+                mp.setCodProd(rs.getInt("codprod"));
+                mp.setDesc(rs.getString("desc"));
+                mp.setPreco(rs.getDouble("preco"));
+                mp.setQt(rs.getInt("qt"));
+                mp.setTotal(rs.getDouble("total"));
+                mpList.add(mp);
+            }
+            return mpList;
+        }
+        catch ( SQLException e ){
+            Log.log(e);
+            return null;
+        }        
+    }
+    
+	///////////////////////////////////////////////////////
+	// Getter and Setters
+	///////////////////////////////////////////////////////
     public int getCodMov() {
         return codMov;
     }

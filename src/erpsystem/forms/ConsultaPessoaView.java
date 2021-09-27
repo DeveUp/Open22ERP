@@ -24,8 +24,8 @@
 
 package erpsystem.forms;
 
+import erpsystem.controller.PessoaController;
 import erpsystem.model.Pessoa;
-import erpsystem.model.PessoasDB;
 import erpsystem.util.Util;
 
 import java.awt.event.KeyEvent;
@@ -215,7 +215,8 @@ public class ConsultaPessoaView extends javax.swing.JFrame {
     {
         tblClientes.setEnabled(false);
         String cliName = tfdCliName.getText();
-        java.util.List<Pessoa> cliList = PessoasDB.findClient(cliName);
+        PessoaController pessoaController = new PessoaController();
+        java.util.List<Pessoa> cliList = pessoaController.findClient(cliName);
         
         if ( cliList != null )
             fill(cliList);

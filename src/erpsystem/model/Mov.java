@@ -24,10 +24,23 @@
 package erpsystem.model;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import erpsystem.util.DB;
+import erpsystem.util.Log;
 
 /**
- * @author Diego
- * @contributors - GitHub - SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
+ * @author Diego Geronimo Onofre.
+ * @channel https://www.youtube.com/user/cursostd.
+ * @facebook https://www.facebook.com/diegogeronimoonofre.
+ * @Github https://github.com/DiegoGeronimoOnofre.
+ * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  */
 public class Mov implements Serializable{
 
@@ -38,9 +51,111 @@ public class Mov implements Serializable{
     private int payMethodCode;
     private int movType;
     
+	///////////////////////////////////////////////////////
+	// Builders
+	///////////////////////////////////////////////////////
     public Mov() {
+    	this(-1, -1, -1, -1);
+	}
+    
+    public Mov(int cod_cli, int payMethodCode, int movType) {
+		this(-1, cod_cli, payMethodCode, movType);
+	}
+    
+	public Mov(int codigo, int cod_cli, int payMethodCode, int movType) {
+		super();
+		this.codigo = codigo;
+		this.cod_cli = cod_cli;
+		this.payMethodCode = payMethodCode;
+		this.movType = movType;
 	}
 
+
+	///////////////////////////////////////////////////////
+	// Method
+	///////////////////////////////////////////////////////
+    public int findCode()
+    {
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String update = "SELECT MAX(codigo) AS 'cod' FROM mov";
+            ResultSet rs = st.executeQuery(update);
+            rs.next();
+            return rs.getInt("cod") + 1;
+        }
+        catch ( SQLException e ){
+            Log.log(e);
+            return -1;
+        }
+    }
+    
+    public int add(Mov mov)
+    {
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            final int cod          = findCode();
+            final int codCli       = mov.getCod_cli();
+            final int codPayMethod = mov.getPayMethodCode();
+            final int movTypeCode  = mov.getMovType();
+            long time              = System.currentTimeMillis();
+            String update = " INSER "
+                          + "   INTO mov "
+                          + "   VALUES(" + cod + ","
+                                         + codCli + ","
+                                         + codPayMethod + ","
+                                         + movTypeCode + ","
+                                         + time
+                          + ")";
+            
+            st.executeUpdate(update);
+            con.commit();
+            return cod;
+
+        }
+        catch ( SQLException e ){
+            Log.log(e);
+            return -1;
+        }
+    }
+    
+    public List<PessoaMov> findClientMov(String pessoa)
+    {
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String update = " SELECT mov.codigo         AS 'codmov',"
+                          + "        mov.mov_time       AS 'mov_time',"
+                          + "        pessoas.nome       AS 'nome',"
+                          + "        mov.mov_type       AS 'mov_type',"
+                          + "        mov.cod_pay_method AS 'paym'"
+                          + " FROM mov, pessoas "
+                          + " WHERE mov.cod_cli = pessoas.codigo "
+                          + "   AND upper(trim(pessoas.nome)) LIKE '%" + pessoa.trim().toUpperCase() + "%'"
+                          + " ORDER BY mov.mov_time";
+            ResultSet rs = st.executeQuery(update);
+            List<PessoaMov> cmList = new ArrayList<>();
+            while (rs.next()){
+                PessoaMov cm = new PessoaMov();
+                cm.setMovCod(rs.getInt("codmov"));
+                cm.setData(new Date(rs.getLong("mov_time")));
+                cm.setClientName(rs.getString("nome"));
+                cm.setType(rs.getInt("mov_type"));
+                cm.setPayMethod(rs.getInt("paym"));
+                cmList.add(cm);
+            }
+            return cmList;
+        }
+        catch ( SQLException e ){
+            Log.log(e);
+            return null;
+        }
+    }
+
+	///////////////////////////////////////////////////////
+	// Getter and Setters
+	///////////////////////////////////////////////////////
     public int getCodigo() {
         return codigo;
     }

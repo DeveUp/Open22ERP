@@ -24,10 +24,22 @@
 package erpsystem.model;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import erpsystem.util.DB;
+import erpsystem.util.Log;
 
 /**
- * @author Diego
- * @contributors - GitHub - SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
+ * @author Diego Geronimo Onofre.
+ * @channel https://www.youtube.com/user/cursostd.
+ * @facebook https://www.facebook.com/diegogeronimoonofre.
+ * @Github https://github.com/DiegoGeronimoOnofre.
+ * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  */
 public class PayMethod implements Serializable{
 
@@ -37,9 +49,136 @@ public class PayMethod implements Serializable{
     private String descricao;
     private int limite;
     
+	///////////////////////////////////////////////////////
+	// Builders
+	///////////////////////////////////////////////////////
     public PayMethod() {
 	}
-
+    
+	///////////////////////////////////////////////////////
+	// Method
+	///////////////////////////////////////////////////////
+    public boolean exists(String desc)
+    {
+        return !findPayMethod(desc).isEmpty();
+    }
+    
+    public boolean exists(int code)
+    {
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String update = " SELECT codigo AS 'cod' "
+                          + " FROM formaspagamento "
+                          + " WHERE codigo = " + code;
+            ResultSet rs = st.executeQuery(update);
+            return rs.next();
+        }
+        catch ( Exception e ){
+            Log.log(e);
+            return false;
+        }        
+    } 
+    
+    public PayMethod find(int code)
+    {      
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String update = " SELECT formaspagamento.codigo       AS 'cod',"
+                          + "        formaspagamento.descricao    AS 'desc',"
+                          + "        formaspagamento.limite_value AS 'lim'"
+                          + " FROM formaspagamento "
+                          + " WHERE codigo = " + code;
+            ResultSet rs = st.executeQuery(update);
+            if (rs.next()){
+                setCod(rs.getInt("cod"));
+                setDescricao(rs.getString("desc"));
+                setLimite(rs.getInt("lim"));
+                return this;
+            }
+            else
+                return null;
+        }
+        catch ( SQLException e){
+            Log.log(e);
+            return null;
+        }        
+    }
+    
+    public int findCode()
+    {
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String update = "SELECT MAX(codigo) AS 'cod' FROM formaspagamento";
+            ResultSet rs = st.executeQuery(update);
+            rs.next();
+            return rs.getInt("cod") + 1;
+        }
+        catch ( Exception e ){
+            Log.log(e);
+            return -1;
+        }
+    }
+    
+    public void add(PayMethod pm)
+    {
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String update = " INSERT "
+                          + "   INTO formaspagamento "
+                          + "   VALUES(" + findCode() + ","
+                                    + "'" + pm.getDescricao() + "',"
+                                    + ""  +  pm.getLimite() + ""
+                          + ")";
+            st.executeUpdate(update);
+            con.commit();
+        }
+        catch ( Exception e ){
+            Log.log(e);
+        }
+    }
+    
+    public List<PayMethod> findAll()
+    {
+        return findPayMethod("%");
+    }
+    
+    public List<PayMethod> findPayMethod(String descricao)
+    {
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String update = " SELECT formaspagamento.codigo        AS 'cod',"
+                          + "        formaspagamento.descricao     AS 'desc',"
+                          + "        formaspagamento.limite_value  AS 'lim'"
+                          + " FROM formaspagamento "
+                          + " WHERE UPPER(trim(formaspagamento.descricao)) LIKE '%" + descricao.trim().toUpperCase() + "%'";
+            
+            ResultSet rs = st.executeQuery(update);
+            List<PayMethod> pmList = new ArrayList<>();
+            while (rs.next()){
+                PayMethod pm = new PayMethod();
+                pm.setCod(rs.getInt("cod"));
+                pm.setDescricao(rs.getString("desc"));
+                pm.setLimite(rs.getInt("lim"));
+                pmList.add(pm);
+            }
+            
+            return pmList;
+        }
+        catch ( SQLException e ){
+            Log.log(e);
+            return null;
+        }
+    }
+    
+    
+	///////////////////////////////////////////////////////
+	// Getter and Setters
+	///////////////////////////////////////////////////////
     public int getCod() {
         return cod;
     }

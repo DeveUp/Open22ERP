@@ -25,11 +25,13 @@
 package erpsystem.forms;
 
 import erpsystem.controller.EstoqueController;
+import erpsystem.controller.MovController;
+import erpsystem.controller.PessoaController;
 import erpsystem.model.Estoque;
+import erpsystem.model.Mov;
 import erpsystem.model.MovProd;
 import erpsystem.model.PayMethod;
 import erpsystem.model.Pessoa;
-import erpsystem.model.PessoasDB;
 import erpsystem.model.Produto;
 import erpsystem.model.ProdutosDB;
 import erpsystem.util.Log;
@@ -111,7 +113,8 @@ public class MovView extends javax.swing.JFrame {
     final void fillPayMethods()
     {
         cbxPayMethod.removeAllItems();
-        java.util.List<erpsystem.model.PayMethod> pmList = erpsystem.model.PayMethodDB.findAll();
+        PayMethod payMethodModel = new PayMethod();
+        java.util.List<erpsystem.model.PayMethod> pmList = payMethodModel.findAll();
         final int len = pmList.size();
         
         for ( int i = 0; i < len; i++ ){
@@ -755,7 +758,8 @@ public class MovView extends javax.swing.JFrame {
         
         if ( Util.isInt(cs) ){
             int code = Integer.parseInt(cs);
-            Pessoa cli = PessoasDB.find(code);
+            PessoaController pesoController = new PessoaController();
+            Pessoa cli = pesoController.find(code);
 
             if ( cli != null )
                 fillCli(cli);
@@ -879,8 +883,9 @@ public class MovView extends javax.swing.JFrame {
         int movTypeCode                = getMovType();
         
         if ( movTypeCode != -1 ){
-            String msg = business.Mov.persistMov(cliCod,payMethodCode, movTypeCode, mpList);
-
+        	Mov mov = new Mov(cliCod, payMethodCode, movTypeCode);
+        	MovController movController = new MovController();
+            String msg = movController.persistMov(mov, mpList);
             if ( msg == null ){
                 msg("Nova movimentação gerada com sucesso.");
             }
@@ -910,7 +915,8 @@ public class MovView extends javax.swing.JFrame {
             public void chosenCode(int code)
             {
                 tfdCodCli.setText(String.valueOf(code));
-                Pessoa cli = PessoasDB.find(code);
+                PessoaController pessoaController = new PessoaController();
+                Pessoa cli = pessoaController.find(code);
                 
                 if ( cli != null )
                     fillCli(cli);
@@ -978,12 +984,11 @@ public class MovView extends javax.swing.JFrame {
             String s = tfdCodCli.getText().trim();
             if ( Util.isInt(s) ){
                 int codCli = Integer.parseInt(s);
-
-                if (! PessoasDB.exists(codCli) )
+                PessoaController pessoaController = new PessoaController();
+                if (! pessoaController.exists(codCli) )
                     findCli();
                 else{
-                    Pessoa cli = PessoasDB.find(codCli);
-                    
+                    Pessoa cli = pessoaController.find(codCli);
                     if ( cli != null ){
                         fillCli(cli);
                     }

@@ -18,4 +18,13 @@ public class Variable implements Serializable{
 	public static final String ERP_SYSTEM_DB_URL = "jdbc:mysql://localhost/"+ERP_SYSTEM_DB_NAME;
 	public static final String ERP_SYSTEM_DB_USER = "root";
 	public static final String ERP_SYSTEM_DB_PASSWORD = "";
+	
+	
+	public static final String ERP_ERROR_MOV = "Ocorreu um problema ao gravar as \n"
+            									+ "informações da movimentação no banco de dados.\n"
+            									+ "Isso pode ter ocorrido por diversos fatores como \n"
+            									+ "problema de hardware ou o servidor de banco de dados \n"
+            									+ " não estava em execução ou seu sistema está corrompido. \n"
+            									+ " é recomendável realizar a movimentação novamente, assim se \n"
+            									+ "o problema persistir entre em contato com o Desenvolvedor.";
 }

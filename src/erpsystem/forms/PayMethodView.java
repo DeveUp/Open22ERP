@@ -6,7 +6,7 @@
 
 package erpsystem.forms;
 
-import erpsystem.model.PayMethodDB;
+import erpsystem.model.PayMethod;
 import erpsystem.util.Util;
 
 import javax.swing.JFrame;
@@ -106,9 +106,10 @@ public class PayMethodView extends javax.swing.JDialog {
             erpsystem.model.PayMethod payMethod = new erpsystem.model.PayMethod();
             payMethod.setDescricao(payMethodValue);
             payMethod.setLimite(intLimite);
+            PayMethod payMethodModel = new PayMethod();
             
-            if (! PayMethodDB.exists(payMethodValue) )
-                erpsystem.model.PayMethodDB.add(payMethod);
+            if (! payMethodModel.exists(payMethodValue) )
+            	payMethodModel.add(payMethod);
             else
                 javax.swing.JOptionPane.showMessageDialog(null, "Forma de pagamento já cadastrada.");
         }

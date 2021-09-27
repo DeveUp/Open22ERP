@@ -24,6 +24,7 @@
 
 package erpsystem.forms;
 
+import erpsystem.controller.PessoaController;
 import erpsystem.model.Pessoa;
 import erpsystem.util.Util;
 
@@ -210,20 +211,13 @@ public class PessoasView extends javax.swing.JFrame {
     {
         if ( validateFields() ){
             Pessoa cli = new Pessoa();
-
-            String nome  = tfdNome.getText();
-            String cpf   = tfdCpf.getText();
-            String email = tfdEmail.getText();
-            String loc   = tfdLoc.getText();
-            String tel   = tfdTel.getText();
-
-            cli.setNome(nome);
-            cli.setCpf(cpf);
-            cli.setEmail(email);
-            cli.setLocalizacao(loc);
-            cli.setTelefone(tel);
-            boolean result = business.Pessoas.add(cli);
-
+            PessoaController pessoaController = new PessoaController();
+            cli.setNome(tfdNome.getText());
+            cli.setCpf(tfdCpf.getText());
+            cli.setEmail(tfdEmail.getText());
+            cli.setLocalizacao(tfdLoc.getText());
+            cli.setTelefone(tfdTel.getText());
+            boolean result = pessoaController.add(cli);
             if ( result ){
                 msg("Nova pessoa cadastrada com sucesso.");
                 clearFields();

@@ -25,7 +25,7 @@
 package erpsystem.forms;
 
 import erpsystem.model.MovProd;
-import erpsystem.model.MovProdDB;
+import erpsystem.model.PayMethod;
 import erpsystem.model.PessoaMov;
 import erpsystem.util.Log;
 import erpsystem.util.Util;
@@ -303,8 +303,8 @@ public class ConsultaMovView extends javax.swing.JFrame {
             
             final int type = cm.getType();
             final int payMethod = cm.getPayMethod();
-            
-            erpsystem.model.PayMethod payMethodObj = erpsystem.model.PayMethodDB.find(payMethod);
+            PayMethod payMethodModel = new PayMethod();
+            erpsystem.model.PayMethod payMethodObj = payMethodModel.find(payMethod);
             
             if (payMethodObj != null){
                 String payMethodValue = payMethodObj.getDescricao();
@@ -383,7 +383,8 @@ public class ConsultaMovView extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRow = tblMovs.getSelectedRow();
         int movCod = (int) tblMovs.getModel().getValueAt( selectedRow, MOV_COD);
-        java.util.List<erpsystem.model.MovProd> mpList = MovProdDB.findProds(movCod);
+        MovProd movProdu = new MovProd();
+        java.util.List<erpsystem.model.MovProd> mpList = movProdu.findProds(movCod);
         
         if ( mpList != null ){
             fillProds(mpList);

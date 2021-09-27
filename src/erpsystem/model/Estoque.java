@@ -33,8 +33,11 @@ import erpsystem.util.DB;
 import erpsystem.util.Log;
 
 /**
- * @author Diego
- * @contributors - GitHub - SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
+ * @author Diego Geronimo Onofre.
+ * @channel https://www.youtube.com/user/cursostd.
+ * @facebook https://www.facebook.com/diegogeronimoonofre.
+ * @Github https://github.com/DiegoGeronimoOnofre.
+ * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  */
 public class Estoque implements Serializable{
 
@@ -115,7 +118,7 @@ public class Estoque implements Serializable{
         try{
             Connection con = DB.getConnection();
             Statement st = con.createStatement();
-            String update = " SELECT estoque.cod_prod AS 'cod', estoque.qt AS 'qt'"
+            String update = "SELECT estoque.cod_prod AS 'cod', estoque.qt AS 'qt'"
                           + " FROM   estoque "
                           + " WHERE  estoque.cod_prod = " + code;
             
@@ -139,9 +142,9 @@ public class Estoque implements Serializable{
         try{
             Connection con = DB.getConnection();
             Statement st = con.createStatement();
-            String query = " select estoque.cod_prod"
-                          + " from estoque "
-                          + " where estoque.cod_prod = " + cod;
+            String query = "SELECT estoque.cod_prod"
+                          + " FROM estoque "
+                          + " WHERE estoque.cod_prod = " + cod;
             
             ResultSet rs = st.executeQuery(query);
             return rs.next();

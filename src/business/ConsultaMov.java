@@ -24,6 +24,7 @@
 
 package business;
 
+import erpsystem.model.Mov;
 import erpsystem.model.PessoaMov;
 
 /**
@@ -34,6 +35,7 @@ import erpsystem.model.PessoaMov;
 public class ConsultaMov {
     public static java.util.List<PessoaMov> findClientMov(String clientName)
     {
-        return erpsystem.model.MovDB.findClientMov(clientName);
+    	Mov mv = new Mov();
+        return mv.findClientMov(clientName);
     }
 }
