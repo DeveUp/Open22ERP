@@ -26,6 +26,8 @@
 	-fx-text-fill: -fx-variable-primary-color;
 }
 
+.button-genric,
+.button-genric:hover,
 .button-menu-info,
 .button-menu-info:hover{
 	-fx-background-color: -fx-variable-secundary;
@@ -33,14 +35,16 @@
 	-fx-font-weight: bold;
 }
 
+
 .button-menu,
 .button-menu:hover,
 .button-menu-info,
-.button-menu-info:hover{
+.button-menu-info:hover,
+.button-genric,
+.button-genric:hover{
 	-fx-font-size: 15px;
 	-fx-font-family: -fx-variable-font-family;
 }
-
 
 .container-main{
 	-fx-width: 900px;
@@ -49,4 +53,20 @@
 
 .container {
 	-fx-background-color: -fx-variable-disabled;
+}
+
+
+.title{
+	-fx-font-size: 30px;
+	-fx-text-transform: uppercase;
+	-fx-font-family: -fx-variable-font-family;
+	-fx-text-fill: -fx-variable-secundary;
+	-fx-font-weight: bold;
+}
+
+
+.label-txt{
+	-fx-font-size: 16px;
+	-fx-font-family: -fx-variable-font-family;
+	-fx-font-weight: bold;
 }

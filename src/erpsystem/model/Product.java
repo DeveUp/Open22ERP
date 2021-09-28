@@ -43,7 +43,7 @@ import erpsystem.util.Log;
  * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  * @version 2.0.0.
  */
-public class Produto implements Serializable{
+public class Product implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
@@ -56,9 +56,17 @@ public class Produto implements Serializable{
 	///////////////////////////////////////////////////////
 	// Builders
 	///////////////////////////////////////////////////////
-    public Produto() {
+    public Product() {
 	}
+
     
+	public Product(String codBarras, String descricao, double precoCompra, double precoVenda) {
+		this.codBarras = codBarras;
+		this.descricao = descricao;
+		this.precoCompra = precoCompra;
+		this.precoVenda = precoVenda;
+	}
+
 	///////////////////////////////////////////////////////
 	// Method
 	///////////////////////////////////////////////////////
@@ -78,7 +86,23 @@ public class Produto implements Serializable{
         }        
     }  
     
-    public Produto find(int cod){
+    public boolean existsBarcode(String code){
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String update = " SELECT codigo AS 'cod' "
+                          + " FROM produtos "
+                          + " WHERE cod_barras = " + code;
+            ResultSet rs = st.executeQuery(update);
+            return rs.next();
+        }
+        catch ( Exception e ){
+            Log.log(e);
+            return false;
+        }        
+    }  
+    
+    public Product find(int cod){
         try{
             Connection con = DB.getConnection();
             Statement st = con.createStatement();
@@ -118,7 +142,7 @@ public class Produto implements Serializable{
         }
     }
     
-    public List<Produto> findProd(String desc){
+    public List<Product> findProd(String desc){
         try{
             Connection con = DB.getConnection();
             Statement st = con.createStatement();
@@ -131,9 +155,9 @@ public class Produto implements Serializable{
                           + " WHERE UPPER(trim(produtos.descricao)) LIKE '%" + desc.trim().toUpperCase() + "%'";
             
             ResultSet rs = st.executeQuery(update);
-            List<Produto> prodList = new ArrayList<>();
+            List<Product> prodList = new ArrayList<>();
             while (rs.next()){
-                Produto prod = new Produto();             
+                Product prod = new Product();             
                 prod.setCodigo(rs.getInt("cod"));
                 prod.setCodBarras(rs.getString("cod_barras"));
                 prod.setDescricao(rs.getString("desc"));
@@ -154,7 +178,7 @@ public class Produto implements Serializable{
      * no objeto passado como parâmetro "Produto"
      * depois que tem certeza que o produto foi cadastrado.
      */
-    public boolean add(Produto prod){
+    public boolean add(Product prod){
         try{
             Connection con = DB.getConnection();
             Statement st = con.createStatement();

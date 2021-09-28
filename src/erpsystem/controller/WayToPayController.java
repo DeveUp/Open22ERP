@@ -1,9 +1,8 @@
 package erpsystem.controller;
 
 import java.io.Serializable;
-import java.util.List;
 
-import erpsystem.model.Produto;
+import erpsystem.model.WayToPay;
 
 /**
  * @project Open22ERP.
@@ -14,36 +13,21 @@ import erpsystem.model.Produto;
  * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  * @version 2.0.0.
  */
-public class ProdutoController implements Serializable{
+public class WayToPayController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
+
 	///////////////////////////////////////////////////////
 	// Builders
 	///////////////////////////////////////////////////////
-	public ProdutoController() {
+	public WayToPayController() {
 	}
 	
 	///////////////////////////////////////////////////////
 	// Method
 	///////////////////////////////////////////////////////
-	public boolean exists(int code){
-		Produto productModel = new Produto();
-		return productModel.exists(code);
-	}
-	
-	public Produto find(int code){
-		Produto productModel = new Produto();
-		return productModel.find(code);
-	}
-	
-	public List<Produto> findProd(String desc){
-		Produto productModel = new Produto();
-		return productModel.findProd(desc);
-	}
-	
-	public boolean add(Produto produto){
-		Produto productModel = new Produto();
-		return productModel.add(produto);
+	public boolean add(WayToPay pay){
+		WayToPay wayToPayModel = new WayToPay();
+		return wayToPayModel.add(pay);
 	}
 }

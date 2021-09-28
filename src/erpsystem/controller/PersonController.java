@@ -3,7 +3,7 @@ package erpsystem.controller;
 import java.io.Serializable;
 import java.util.List;
 
-import erpsystem.model.Pessoa;
+import erpsystem.model.Person;
 
 /**
  * @project Open22ERP.
@@ -14,35 +14,35 @@ import erpsystem.model.Pessoa;
  * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  * @version 2.0.0.
  */
-public class PessoaController implements Serializable{
+public class PersonController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	///////////////////////////////////////////////////////
 	// Builders
 	///////////////////////////////////////////////////////
-	public PessoaController() {
+	public PersonController() {
 	}
 	
 	///////////////////////////////////////////////////////
 	// Method
 	///////////////////////////////////////////////////////
 	public boolean exists(int codeClient) {
-		Pessoa pessoaModel = new Pessoa();
+		Person pessoaModel = new Person();
 		return pessoaModel.exists(codeClient);
 	}
 	
-	public Pessoa find(int code) {
-		Pessoa pessoaModel = new Pessoa();
+	public Person find(int code) {
+		Person pessoaModel = new Person();
 		return pessoaModel.find(code);
 	}
 	
-	public boolean add(Pessoa cli){
+	public boolean add(Person cli){
         return cli.add(cli);
     }
 	
-	public List<Pessoa> findClient(String name) {
-		Pessoa pessoaModel = new Pessoa();
+	public List<Person> findClient(String name) {
+		Person pessoaModel = new Person();
 		return pessoaModel.findClient(name);
 	}
 
