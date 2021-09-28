@@ -44,7 +44,7 @@ import erpsystem.util.Log;
  * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  * @version 2.0.0.
  */
-public class Pessoa implements Serializable{
+public class Person implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -58,14 +58,21 @@ public class Pessoa implements Serializable{
 	///////////////////////////////////////////////////////
 	// Builders
 	///////////////////////////////////////////////////////
-    public Pessoa() {
+    public Person() {
+	}
+    
+    public Person(String nome, String cpf, String email, String localizacao, String telefone) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.email = email;
+		this.localizacao = localizacao;
+		this.telefone = telefone;
 	}
     
 	///////////////////////////////////////////////////////
 	// Method
 	///////////////////////////////////////////////////////
-    
-    public boolean exists(int code){
+	public boolean exists(int code){
         try{
             Connection con = DB.getConnection();
             Statement st = con.createStatement();
@@ -81,7 +88,7 @@ public class Pessoa implements Serializable{
         }        
     }
     
-    public Pessoa find(int code){
+    public Person find(int code){
         try{
             Connection con = DB.getConnection();
             Statement st = con.createStatement();
@@ -127,7 +134,7 @@ public class Pessoa implements Serializable{
         }
     }
     
-    public  List<Pessoa> findClient(String clientName)
+    public  List<Person> findClient(String clientName)
     {
         try{
             Connection con = DB.getConnection();
@@ -142,9 +149,9 @@ public class Pessoa implements Serializable{
                           + " WHERE UPPER(trim(pessoas.nome)) LIKE '%" + clientName.trim().toUpperCase() + "%'";
             
             ResultSet rs = st.executeQuery(update);
-            List<Pessoa> cliList = new ArrayList<>();
+            List<Person> cliList = new ArrayList<>();
             while (rs.next()){    
-                Pessoa cli = new Pessoa();
+                Person cli = new Person();
                 cli.setCodigo(rs.getInt("cod"));
                 cli.setNome(rs.getString("nome"));
                 cli.setCpf(rs.getString("cpf"));
@@ -161,7 +168,7 @@ public class Pessoa implements Serializable{
         }
     }
     
-    public boolean add(Pessoa cli){
+    public boolean add(Person cli){
         try{
             Connection con = DB.getConnection();
             Statement st = con.createStatement();

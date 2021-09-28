@@ -55,4 +55,27 @@ public class Util implements Serializable{
 		return panel;
     }  
     
+    
+    public static boolean isChain(String chain) {
+    	return (chain != null && chain.length() > 0 && chain.trim().length() > 0);
+    }
+    
+    public static boolean isDouble(String value)
+    {
+        try{
+            Double.parseDouble(value);
+            return true;
+        }
+        catch ( Exception e ){
+            return false;
+        }
+    }
+    
+    public static Double parseDouble(String value) {
+    	if(isDouble(value)) {
+    		return Double.parseDouble(value);
+    	}
+		return 0.0;
+    }
+    
 }

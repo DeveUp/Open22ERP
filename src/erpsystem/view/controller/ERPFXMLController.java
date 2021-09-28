@@ -1,6 +1,5 @@
 package erpsystem.view.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -9,9 +8,7 @@ import com.jfoenix.controls.JFXButton;
 import erpsystem.util.Util;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 
 public class ERPFXMLController implements Initializable {
@@ -42,7 +39,7 @@ public class ERPFXMLController implements Initializable {
 	@FXML
 	public void onButtonRegisterPerson(ActionEvent event) {
 		try {
-			containerChange = Util.loadViewFXML(containerChange, getClass().getResource("../fxml/addInventoryFXML.fxml"));
+			containerChange = Util.loadViewFXML(containerChange, getClass().getResource("../fxml/addPersonFXML.fxml"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -51,7 +48,7 @@ public class ERPFXMLController implements Initializable {
 	@FXML
 	public void onButtonRegisterProduct(ActionEvent event) {
 		try {
-			containerChange = Util.loadViewFXML(containerChange, getClass().getResource("../fxml/addProductoFXML.fxml"));
+			containerChange = Util.loadViewFXML(containerChange, getClass().getResource("../fxml/addProductFXML.fxml"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

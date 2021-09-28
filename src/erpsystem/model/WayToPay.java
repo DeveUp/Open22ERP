@@ -43,7 +43,7 @@ import erpsystem.util.Log;
  * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  * @version 2.0.0.
  */
-public class PayMethod implements Serializable{
+public class WayToPay implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -54,9 +54,14 @@ public class PayMethod implements Serializable{
 	///////////////////////////////////////////////////////
 	// Builders
 	///////////////////////////////////////////////////////
-    public PayMethod() {
+    public WayToPay() {
 	}
     
+	public WayToPay(String descricao, int limite) {
+		this.descricao = descricao;
+		this.limite = limite;
+	}
+
 	///////////////////////////////////////////////////////
 	// Method
 	///////////////////////////////////////////////////////
@@ -82,7 +87,7 @@ public class PayMethod implements Serializable{
         }        
     } 
     
-    public PayMethod find(int code)
+    public WayToPay find(int code)
     {      
         try{
             Connection con = DB.getConnection();
@@ -124,7 +129,7 @@ public class PayMethod implements Serializable{
         }
     }
     
-    public void add(PayMethod pm)
+    public boolean add(WayToPay pm)
     {
         try{
             Connection con = DB.getConnection();
@@ -137,18 +142,20 @@ public class PayMethod implements Serializable{
                           + ")";
             st.executeUpdate(update);
             con.commit();
+            return true;
         }
         catch ( Exception e ){
             Log.log(e);
+            return false;
         }
     }
     
-    public List<PayMethod> findAll()
+    public List<WayToPay> findAll()
     {
         return findPayMethod("%");
     }
     
-    public List<PayMethod> findPayMethod(String descricao)
+    public List<WayToPay> findPayMethod(String descricao)
     {
         try{
             Connection con = DB.getConnection();
@@ -160,9 +167,9 @@ public class PayMethod implements Serializable{
                           + " WHERE UPPER(trim(formaspagamento.descricao)) LIKE '%" + descricao.trim().toUpperCase() + "%'";
             
             ResultSet rs = st.executeQuery(update);
-            List<PayMethod> pmList = new ArrayList<>();
+            List<WayToPay> pmList = new ArrayList<>();
             while (rs.next()){
-                PayMethod pm = new PayMethod();
+                WayToPay pm = new WayToPay();
                 pm.setCod(rs.getInt("cod"));
                 pm.setDescricao(rs.getString("desc"));
                 pm.setLimite(rs.getInt("lim"));
