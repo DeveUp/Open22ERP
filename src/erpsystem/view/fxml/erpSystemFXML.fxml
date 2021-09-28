@@ -16,7 +16,7 @@
 					</effect>
 				</AnchorPane>
 				<JFXButton graphicTextGap="0.0" layoutY="65.0" prefHeight="46.0" prefWidth="174.0" style="-fx-alignment: left;" styleClass="button-menu-info" text="  REGISTRO" textAlignment="JUSTIFY" />
-				<JFXButton layoutY="111.0" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Persona" />
+				<JFXButton fx:id="buttonPerson" layoutY="111.0" onAction="#onButtonPerson" onDragEntered="#handleButtonPerson" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Persona" />
 				<JFXButton layoutY="157.0" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Producto" />
 				<JFXButton layoutY="203.0" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Movimiento" />
 				<JFXButton layoutY="249.0" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Forma Pago" />
