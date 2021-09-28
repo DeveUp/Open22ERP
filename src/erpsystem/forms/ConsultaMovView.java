@@ -24,6 +24,7 @@
 
 package erpsystem.forms;
 
+import erpsystem.controller.MovController;
 import erpsystem.model.MovProd;
 import erpsystem.model.PayMethod;
 import erpsystem.model.PessoaMov;
@@ -366,7 +367,8 @@ public class ConsultaMovView extends javax.swing.JFrame {
     {
         initTabs();
         String clientName = tfdClient.getText();
-        java.util.List<erpsystem.model.PessoaMov> cmList = business.ConsultaMov.findClientMov(clientName);
+        MovController movController = new MovController();
+        java.util.List<erpsystem.model.PessoaMov> cmList = movController.findClientMov(clientName);
         
         if ( cmList != null )
             fillMovs(cmList);

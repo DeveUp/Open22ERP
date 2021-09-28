@@ -34,13 +34,13 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
+ * @project Open22ERP.
  * @author Diego Geronimo Onofre.
  * @channel https://www.youtube.com/user/cursostd.
  * @facebook https://www.facebook.com/diegogeronimoonofre.
  * @Github https://github.com/DiegoGeronimoOnofre.
  * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
- * Este arquivo foi criado para suprir necessidades básicas.
- * Métodos que podem serem utilizados para testar se uma String é um número e outros.
+ * @version 2.0.0.
  */
 public class Util implements Serializable{
 

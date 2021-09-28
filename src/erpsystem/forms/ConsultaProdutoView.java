@@ -25,12 +25,13 @@
 package erpsystem.forms;
 
 import erpsystem.controller.EstoqueController;
+import erpsystem.controller.ProdutoController;
+
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableModel;
 
 import erpsystem.model.Estoque;
 import erpsystem.model.Produto;
-import erpsystem.model.ProdutosDB;
 import erpsystem.util.Util;
 
 import java.awt.event.KeyEvent;
@@ -162,7 +163,8 @@ public class ConsultaProdutoView extends javax.swing.JDialog {
     {
         tblProds.setEnabled(false);
         String desc = tfdDesc.getText();
-        java.util.List<Produto> prodList = ProdutosDB.findProd(desc);
+        ProdutoController produtoController = new ProdutoController();
+        java.util.List<Produto> prodList = produtoController.findProd(desc);
         
         if ( prodList != null )
             fill(prodList);

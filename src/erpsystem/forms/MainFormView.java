@@ -29,6 +29,7 @@ import chartforms.ChartForm002;
 import erpsystem.ERPSystem;
 import erpsystem.util.Log;
 import erpsystem.util.Util;
+import erpsystem.util.Variable;
 
 import java.lang.reflect.Method;
 import java.net.URI;
@@ -39,6 +40,7 @@ import javax.swing.JOptionPane;
  *
  * @author Diego
  */
+@SuppressWarnings("serial")
 public class MainFormView extends javax.swing.JFrame {
 
     /**
@@ -48,7 +50,7 @@ public class MainFormView extends javax.swing.JFrame {
         initComponents();
         
         java.awt.Point p = Util.getCenterPoint(this.getWidth(), this.getHeight());
-        this.setTitle(ERPSystem.appName);
+        this.setTitle(Variable.ERP_SYSTEM_NAME);
         this.setLocation(p);
         this.setResizable(false);
     }
@@ -322,7 +324,7 @@ public class MainFormView extends javax.swing.JFrame {
                 javax.swing.JOptionPane.showMessageDialog(null, 
                                                           "Acesse o linkedin do Diego com o link abaixo.\n" +
                                                           link,
-                                                          ERPSystem.appName,
+                                                          Variable.ERP_SYSTEM_NAME,
                                                           JOptionPane.INFORMATION_MESSAGE);
             }
         }
@@ -356,7 +358,7 @@ public class MainFormView extends javax.swing.JFrame {
                                                           "O sistema não conseguiu abrir a página do projeto(está usando linux?)\n"
                                                          + "mas não se preocupe, você pode participar com o endereço abaixo.\n" +
                                                           link,
-                                                          ERPSystem.appName,
+                                                          Variable.ERP_SYSTEM_NAME,
                                                           JOptionPane.INFORMATION_MESSAGE);
             }
         }
@@ -391,7 +393,7 @@ public class MainFormView extends javax.swing.JFrame {
                                                          + "(está usando linux?), mas não se preocupe, você pode participar acessando endereço\n"
                                                          + "abaixo e enviando sua mensagem, informando em o que poderia ajudar o projeto.\n" +
                                                           link,
-                                                          ERPSystem.appName,
+                                                          Variable.ERP_SYSTEM_NAME,
                                                           JOptionPane.INFORMATION_MESSAGE);
             }
         }
@@ -424,7 +426,7 @@ public class MainFormView extends javax.swing.JFrame {
                                                          + "(está usando linux?), mas não se preocupe, você pode participar acessando endereço\n"
                                                          + "abaixo e enviando sua mensagem, informando em o que poderia ajudar o projeto.\n" +
                                                           link,
-                                                          ERPSystem.appName,
+                                                          Variable.ERP_SYSTEM_NAME,
                                                           JOptionPane.INFORMATION_MESSAGE);
             }
         }

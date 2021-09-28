@@ -25,6 +25,7 @@
 package erpsystem.forms;
 
 import erpsystem.controller.EstoqueController;
+import erpsystem.controller.ProdutoController;
 import erpsystem.model.Estoque;
 import erpsystem.model.Produto;
 import erpsystem.util.Log;
@@ -266,8 +267,8 @@ public class ProdutosView extends javax.swing.JFrame {
              * no objeto passado como parâmetro "Produto"
              * depois que tem certeza que o produto foi cadastrado.
              */
-            
-            boolean result = business.Produtos.add(prod);
+            ProdutoController produtoController = new ProdutoController();
+            boolean result = produtoController.add(prod);
             
             if ( result ){
                 clearFields();

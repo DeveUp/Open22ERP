@@ -28,8 +28,13 @@ import java.io.Serializable;
 import java.sql.Date;
 
 /**
- * @author Diego
- * @contributors - GitHub - SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
+ * @project Open22ERP.
+ * @author Diego Geronimo Onofre.
+ * @channel https://www.youtube.com/user/cursostd.
+ * @facebook https://www.facebook.com/diegogeronimoonofre.
+ * @Github https://github.com/DiegoGeronimoOnofre.
+ * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
+ * @version 2.0.0.
  */
 public class PessoaMov implements Serializable{
 
@@ -41,9 +46,15 @@ public class PessoaMov implements Serializable{
     private int type; 
     private int payMethod;
     
+	///////////////////////////////////////////////////////
+	// Builders
+	///////////////////////////////////////////////////////
     public PessoaMov() {
 	}
     
+	///////////////////////////////////////////////////////
+	// Getter and Setters
+	///////////////////////////////////////////////////////
     public int getMovCod() {
         return movCod;
     }

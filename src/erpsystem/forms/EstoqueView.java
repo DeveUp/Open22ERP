@@ -24,9 +24,9 @@
 package erpsystem.forms;
 
 import erpsystem.controller.EstoqueController;
+import erpsystem.controller.ProdutoController;
 import erpsystem.model.Estoque;
 import erpsystem.model.Produto;
-import erpsystem.model.ProdutosDB;
 import erpsystem.util.Log;
 import erpsystem.util.Util;
 
@@ -153,16 +153,16 @@ public class EstoqueView extends javax.swing.JDialog {
         // TODO add your handling code here:
         java.awt.event.KeyEvent e = evt;
         int code = e.getKeyCode();
-        
+        ProdutoController produtoController = new ProdutoController();
         if ( code == KeyEvent.VK_ENTER ){
             String s = tfdCodProd.getText().trim();
             if ( Util.isInt(s) ){
                 int codProd = Integer.parseInt(s);
 
-                if (! ProdutosDB.exists(codProd) )
+                if (! produtoController.exists(codProd) )
                     findProd();
                 else{
-                    Produto prod = ProdutosDB.find(codProd);
+                    Produto prod = produtoController.find(codProd);
                     
                     if ( prod != null ){
                         fillProd(prod);
@@ -222,11 +222,11 @@ public class EstoqueView extends javax.swing.JDialog {
     {
         String s = String.valueOf(codProd);
         tfdCodProd.setText(s);       
-
-        if (! ProdutosDB.exists(codProd) )
+        ProdutoController produtoController = new ProdutoController();
+        if (! produtoController.exists(codProd) )
             findProd();
         else{
-            Produto prod = ProdutosDB.find(codProd);
+            Produto prod = produtoController.find(codProd);
 
             if ( prod != null ){
                 fillProd(prod);
@@ -272,8 +272,9 @@ public class EstoqueView extends javax.swing.JDialog {
             @Override
             public void chosenCode(int code)
             {
+            	ProdutoController produtoController = new ProdutoController();
                 tfdCodProd.setText(String.valueOf(code));
-                Produto prod = ProdutosDB.find(code);
+                Produto prod = produtoController.find(code);
 
                 if ( prod != null ){
                     fillProd(prod);

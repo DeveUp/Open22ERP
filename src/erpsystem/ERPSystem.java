@@ -27,15 +27,15 @@ package erpsystem;
 import erpsystem.forms.MainFormView;
 
 /**
+ * @project Open22ERP.
  * @author Diego Geronimo Onofre.
  * @channel https://www.youtube.com/user/cursostd.
  * @facebook https://www.facebook.com/diegogeronimoonofre.
  * @Github https://github.com/DiegoGeronimoOnofre.
  * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
+ * @version 2.0.0.
  */
 public class ERPSystem {
-
-	public static final String appName = "Open22ERP";
 
 	public static String getWorkDir() {
 		return System.getProperty("user.dir");

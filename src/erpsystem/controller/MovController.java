@@ -5,14 +5,17 @@ import java.util.List;
 
 import erpsystem.model.Mov;
 import erpsystem.model.MovProd;
+import erpsystem.model.PessoaMov;
 import erpsystem.util.Variable;
 
 /**
+ * @project Open22ERP.
  * @author Diego Geronimo Onofre.
  * @channel https://www.youtube.com/user/cursostd.
  * @facebook https://www.facebook.com/diegogeronimoonofre.
  * @Github https://github.com/DiegoGeronimoOnofre.
  * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
+ * @version 2.0.0.
  */
 public class MovController implements Serializable {
 
@@ -45,5 +48,10 @@ public class MovController implements Serializable {
 				return Variable.ERP_ERROR_MOV;
 		}
 	}
+	
+	public List<PessoaMov> findClientMov(String clientName){
+    	Mov mv = new Mov();
+        return mv.findClientMov(clientName);
+    }
 
 }

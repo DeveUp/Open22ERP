@@ -24,10 +24,24 @@
 package erpsystem.model;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import erpsystem.util.DB;
+import erpsystem.util.Log;
 
 /**
- * @author Diego
- * @contributors - GitHub - SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
+ * @project Open22ERP.
+ * @author Diego Geronimo Onofre.
+ * @channel https://www.youtube.com/user/cursostd.
+ * @facebook https://www.facebook.com/diegogeronimoonofre.
+ * @Github https://github.com/DiegoGeronimoOnofre.
+ * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
+ * @version 2.0.0.
  */
 public class Produto implements Serializable{
 	
@@ -39,9 +53,134 @@ public class Produto implements Serializable{
     private double precoCompra;
     private double precoVenda;
     
+	///////////////////////////////////////////////////////
+	// Builders
+	///////////////////////////////////////////////////////
     public Produto() {
 	}
-
+    
+	///////////////////////////////////////////////////////
+	// Method
+	///////////////////////////////////////////////////////
+    public boolean exists(int code){
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String update = " SELECT codigo AS 'cod' "
+                          + " FROM produtos "
+                          + " WHERE codigo = " + code;
+            ResultSet rs = st.executeQuery(update);
+            return rs.next();
+        }
+        catch ( Exception e ){
+            Log.log(e);
+            return false;
+        }        
+    }  
+    
+    public Produto find(int cod){
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String sql = " SELECT * "
+                       + " FROM produtos "
+                       + " WHERE codigo = " + cod;
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()){
+                setCodigo(rs.getInt("codigo"));
+                setCodBarras(rs.getString("cod_barras"));
+                setDescricao(rs.getString("descricao"));
+                setPrecoCompra(rs.getDouble("preco_compra"));
+                setPrecoVenda(rs.getDouble("preco_venda"));
+                return this;
+            }
+            else
+                return null;
+        }
+        catch ( Exception e ){
+            Log.log(e);
+            return null;
+        }        
+    }
+    
+    public int findCode() {
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String update = "SELECT MAX(codigo) AS 'cod' FROM produtos";
+            ResultSet rs = st.executeQuery(update);
+            rs.next();
+            return rs.getInt("cod") + 1;
+        }
+        catch ( Exception e ){
+            Log.log(e);
+            return -1;
+        }
+    }
+    
+    public List<Produto> findProd(String desc){
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            String update = " SELECT produtos.codigo       AS 'cod',"
+                          + "        produtos.cod_barras   AS 'cod_barras',"
+                          + "        produtos.descricao    AS 'desc',"
+                          + "        produtos.preco_compra AS 'preco_compra',"
+                          + "        produtos.preco_venda  AS 'preco_venda'"
+                          + " FROM produtos "
+                          + " WHERE UPPER(trim(produtos.descricao)) LIKE '%" + desc.trim().toUpperCase() + "%'";
+            
+            ResultSet rs = st.executeQuery(update);
+            List<Produto> prodList = new ArrayList<>();
+            while (rs.next()){
+                Produto prod = new Produto();             
+                prod.setCodigo(rs.getInt("cod"));
+                prod.setCodBarras(rs.getString("cod_barras"));
+                prod.setDescricao(rs.getString("desc"));
+                prod.setPrecoCompra(rs.getDouble("preco_compra"));
+                prod.setPrecoVenda(rs.getDouble("preco_venda"));
+                prodList.add(prod);
+            }
+            return prodList;
+        }
+        catch ( SQLException e ){
+            Log.log(e);
+            return null;
+        }        
+    }
+    
+    /**
+     * Este método injeta o código do produto
+     * no objeto passado como parâmetro "Produto"
+     * depois que tem certeza que o produto foi cadastrado.
+     */
+    public boolean add(Produto prod){
+        try{
+            Connection con = DB.getConnection();
+            Statement st = con.createStatement();
+            int code = findCode();
+            String update = " insert "
+                          + " into produtos "
+                          + " values(" + code + ","
+                                    + "'" + prod.getCodBarras() + "',"
+                                    + "'" + prod.getDescricao() + "',"
+                                    + prod.getPrecoCompra() + ","
+                                    + prod.getPrecoVenda()
+                          + ")";
+            st.executeUpdate(update);
+            con.commit();
+            prod.setCodigo(code);
+            return true;
+        }
+        catch ( Exception e ){
+            Log.log(e);
+            return false;
+        }
+    }
+    
+	///////////////////////////////////////////////////////
+	// Getter and Setters
+	///////////////////////////////////////////////////////
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }

@@ -3,7 +3,7 @@ package erpsystem.controller;
 import java.io.Serializable;
 import java.util.List;
 
-import erpsystem.model.Pessoa;
+import erpsystem.model.Produto;
 
 /**
  * @project Open22ERP.
@@ -14,36 +14,36 @@ import erpsystem.model.Pessoa;
  * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  * @version 2.0.0.
  */
-public class PessoaController implements Serializable{
+public class ProdutoController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	///////////////////////////////////////////////////////
 	// Builders
 	///////////////////////////////////////////////////////
-	public PessoaController() {
+	public ProdutoController() {
 	}
 	
 	///////////////////////////////////////////////////////
 	// Method
 	///////////////////////////////////////////////////////
-	public boolean exists(int codeClient) {
-		Pessoa pessoaModel = new Pessoa();
-		return pessoaModel.exists(codeClient);
+	public boolean exists(int code){
+		Produto productModel = new Produto();
+		return productModel.exists(code);
 	}
 	
-	public Pessoa find(int code) {
-		Pessoa pessoaModel = new Pessoa();
-		return pessoaModel.find(code);
+	public Produto find(int code){
+		Produto productModel = new Produto();
+		return productModel.find(code);
 	}
 	
-	public boolean add(Pessoa cli){
-        return cli.add(cli);
-    }
-	
-	public List<Pessoa> findClient(String name) {
-		Pessoa pessoaModel = new Pessoa();
-		return pessoaModel.findClient(name);
+	public List<Produto> findProd(String desc){
+		Produto productModel = new Produto();
+		return productModel.findProd(desc);
 	}
-
+	
+	public boolean add(Produto produto){
+		Produto productModel = new Produto();
+		return productModel.add(produto);
+	}
 }
