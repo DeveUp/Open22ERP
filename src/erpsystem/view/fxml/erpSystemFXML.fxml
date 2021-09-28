@@ -6,46 +6,87 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0" styleClass="container-main" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="erpsystem.view.controller.ERPFXMLController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0"
+	styleClass="container-main" xmlns="http://javafx.com/javafx/16"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="erpsystem.view.controller.ERPFXMLController">
 	<children>
-		<AnchorPane prefHeight="700.0" prefWidth="222.0" styleClass="menu__container-items">
+		<AnchorPane prefHeight="700.0" prefWidth="222.0"
+			styleClass="menu__container-items">
 			<children>
-				<AnchorPane layoutY="-4.0" prefHeight="706.0" prefWidth="52.0" styleClass="menu__container-items-container-icon">
+				<AnchorPane layoutY="-4.0" prefHeight="706.0"
+					prefWidth="52.0" styleClass="menu__container-items-container-icon">
 					<effect>
 						<DropShadow />
 					</effect>
 				</AnchorPane>
-				<JFXButton graphicTextGap="0.0" layoutY="65.0" prefHeight="46.0" prefWidth="174.0" style="-fx-alignment: left;" styleClass="button-menu-info" text="  REGISTRO" textAlignment="JUSTIFY" />
-				<JFXButton fx:id="buttonPerson" layoutY="111.0" onAction="#onButtonPerson" onDragEntered="#handleButtonPerson" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Persona" />
-				<JFXButton layoutY="157.0" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Producto" />
-				<JFXButton layoutY="203.0" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Movimiento" />
-				<JFXButton layoutY="249.0" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Forma Pago" />
-				<JFXButton layoutY="295.0" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Stock" />
-				
-				<JFXButton layoutY="341.0" prefHeight="46.0" prefWidth="174.0" style="-fx-alignment: left;" styleClass="button-menu-info" text="  CONSULTAR" />
-				<JFXButton layoutY="387.0" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Persona" />
-				<JFXButton layoutY="433.0" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Producto" />
-				<JFXButton layoutY="479.0" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Movimiento" />
-				
-				<JFXButton graphicTextGap="10.0" layoutY="525.0" prefHeight="46.0" prefWidth="174.0" style="-fx-alignment: left;" styleClass="button-menu-info" text="  ESTADISTICAS" />
-				<JFXButton layoutY="571.0" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Intervalo" />
-				<JFXButton layoutY="617.0" prefHeight="46.0" prefWidth="222.0" styleClass="button-menu" text="Dia" />
-            <BorderPane layoutX="15.0" layoutY="120.0" prefHeight="28.0" prefWidth="22.0" />
-            <BorderPane layoutX="15.0" layoutY="166.0" prefHeight="28.0" prefWidth="22.0" />
-            <BorderPane layoutX="15.0" layoutY="212.0" prefHeight="28.0" prefWidth="22.0" />
-            <BorderPane layoutX="15.0" layoutY="258.0" prefHeight="28.0" prefWidth="22.0" />
-            <BorderPane layoutX="15.0" layoutY="304.0" prefHeight="28.0" prefWidth="22.0" />
-            <BorderPane layoutX="15.0" layoutY="396.0" prefHeight="28.0" prefWidth="22.0" />
-            <BorderPane layoutX="15.0" layoutY="442.0" prefHeight="28.0" prefWidth="22.0" />
-            <BorderPane layoutX="15.0" layoutY="488.0" prefHeight="28.0" prefWidth="22.0" />
-            <BorderPane layoutX="15.0" layoutY="580.0" prefHeight="28.0" prefWidth="22.0" />
-            <BorderPane layoutX="15.0" layoutY="626.0" prefHeight="28.0" prefWidth="22.0" />
+				<JFXButton graphicTextGap="0.0" layoutY="65.0"
+					prefHeight="46.0" prefWidth="174.0" 
+					styleClass="button-menu-info" text="  REGISTRO"
+					textAlignment="JUSTIFY" />
+				<JFXButton fx:id="buttonPerson" layoutY="111.0"
+					onAction="#onButtonRegisterPerson" prefHeight="46.0" prefWidth="222.0"
+					styleClass="button-menu" text="Persona" />
+				<JFXButton layoutY="157.0" prefHeight="46.0"
+					onAction="#onButtonRegisterProduct"
+					prefWidth="222.0" styleClass="button-menu" text="Producto" />
+				<JFXButton layoutY="203.0" prefHeight="46.0"
+					onAction="#onButtonRegisterMov"
+					prefWidth="222.0" styleClass="button-menu" text="Movimiento" />
+				<JFXButton layoutY="249.0" prefHeight="46.0"
+					onAction="#onButtonRegisterPage"
+					prefWidth="222.0" styleClass="button-menu" text="Forma Pago" />
+				<JFXButton layoutY="295.0" prefHeight="46.0"
+					onAction="#onButtonRegisterStock"
+					prefWidth="222.0" styleClass="button-menu" text="Stock" />
+
+				<JFXButton layoutY="341.0" prefHeight="46.0"
+					prefWidth="174.0" 
+					styleClass="button-menu-info" text="  CONSULTAR" />
+				<JFXButton layoutY="387.0" prefHeight="46.0"
+					onAction="#onButtonFindPerson"
+					prefWidth="222.0" styleClass="button-menu" text="Persona" />
+				<JFXButton layoutY="433.0" prefHeight="46.0"
+					onAction="#onButtonFindProduct"
+					prefWidth="222.0" styleClass="button-menu" text="Producto" />
+				<JFXButton layoutY="479.0" prefHeight="46.0"
+					onAction="#onButtonFindMov"
+					prefWidth="222.0" styleClass="button-menu" text="Movimiento" />
+
+				<JFXButton graphicTextGap="10.0" layoutY="525.0"
+					prefHeight="46.0" prefWidth="174.0" 
+					styleClass="button-menu-info" text="  ESTADISTICAS" />
+				<JFXButton layoutY="571.0" prefHeight="46.0"
+					prefWidth="222.0" styleClass="button-menu" text="Intervalo" />
+				<JFXButton layoutY="617.0" prefHeight="46.0"
+					prefWidth="222.0" styleClass="button-menu" text="Dia" />
+				<BorderPane layoutX="15.0" layoutY="120.0"
+					prefHeight="28.0" prefWidth="22.0" />
+				<BorderPane layoutX="15.0" layoutY="166.0"
+					prefHeight="28.0" prefWidth="22.0" />
+				<BorderPane layoutX="15.0" layoutY="212.0"
+					prefHeight="28.0" prefWidth="22.0" />
+				<BorderPane layoutX="15.0" layoutY="258.0"
+					prefHeight="28.0" prefWidth="22.0" />
+				<BorderPane layoutX="15.0" layoutY="304.0"
+					prefHeight="28.0" prefWidth="22.0" />
+				<BorderPane layoutX="15.0" layoutY="396.0"
+					prefHeight="28.0" prefWidth="22.0" />
+				<BorderPane layoutX="15.0" layoutY="442.0"
+					prefHeight="28.0" prefWidth="22.0" />
+				<BorderPane layoutX="15.0" layoutY="488.0"
+					prefHeight="28.0" prefWidth="22.0" />
+				<BorderPane layoutX="15.0" layoutY="580.0"
+					prefHeight="28.0" prefWidth="22.0" />
+				<BorderPane layoutX="15.0" layoutY="626.0"
+					prefHeight="28.0" prefWidth="22.0" />
 			</children>
 		</AnchorPane>
-		<AnchorPane layoutX="222.0" prefHeight="700.0" prefWidth="680.0" styleClass="container" />
+		<AnchorPane layoutX="222.0" prefHeight="700.0" fx:id="containerChange"
+			prefWidth="680.0" styleClass="container" />
 	</children>
-   <stylesheets>
-      <URL value="@../../../../resources/css/style.css" />
-      <URL value="@../../../../target/resources/css/style.css" />
-   </stylesheets>
+	<stylesheets>
+		<URL value="@../../../../resources/css/style.css" />
+		<URL value="@../../../../target/resources/css/style.css" />
+	</stylesheets>
 </AnchorPane>

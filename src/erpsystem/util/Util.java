@@ -24,14 +24,13 @@
 
 package erpsystem.util;
 
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Toolkit;
-import java.io.Serializable;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 
-import static javax.swing.JOptionPane.*;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
+import java.io.Serializable;
+import java.net.URL;
+
+import javafx.scene.layout.AnchorPane;
 
 /**
  * @project Open22ERP.
@@ -46,71 +45,14 @@ public class Util implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	public static void msg(String s)
-    {
-        showMessageDialog(null, s);
-    }
-    
-	/**
-	 * Verifica se é um valor inteiro válido.
-	 */
-    public static boolean isInt(String value)
-    {
-        try{
-            Integer.parseInt(value);
-            return true;
-        }
-        catch ( Exception e ){
-            return false;
-        }
-    }
-    
-    /**
-	 * Verifica se é um Double válido.
-     */
-    public static boolean isDouble(String value)
-    {
-        try{
-            Double.parseDouble(value);
-            return true;
-        }
-        catch ( Exception e ){
-            return false;
-        }
-    }
-    
-    /**
-     * Utilize este método para ter o Point que adiciona o a Janela no centro.
-     */
-    public static Point getCenterPoint( final int w, final int h )
-    {
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        Dimension d = tk.getScreenSize();
-        final int x = ( int ) ( d.getWidth() / 2 ) - ( w / 2 );
-        final int y = ( int ) ( d.getHeight() / 2 ) - ( h / 2 );
-        return new Point( x, y );
-    }     
-    
-    /** 
-     * Verifica se o char é de valor de preço.
-     */
-    public static boolean isValidPriceChar(char charValue)
-    {
-        String s =  String.valueOf(charValue);
-        int value = isInt(s) ? Integer.parseInt(s):-1;
-        
-        if ( value >= 0 && value <= 9  )
-            return true;
-        else if ( charValue == '.' )
-            return true;
-        
-        return false;
-    }
-    
-    public static DefaultTableCellRenderer getDefaultCellRenderer(){
-        DefaultTableCellRenderer cellRender = new DefaultTableCellRenderer();
-        cellRender.setHorizontalAlignment(SwingConstants.CENTER); 
-        return cellRender;
-    }
+    public static AnchorPane loadViewFXML(AnchorPane panel, URL path) throws Exception {
+    	Parent parent = FXMLLoader.load(path);
+		if(panel != null) {
+			if(panel.getChildren().size() == 0 || panel.getChildren().removeAll(panel.getChildren())) {
+				panel.getChildren().addAll(parent);
+			}
+		}
+		return panel;
+    }  
     
 }
