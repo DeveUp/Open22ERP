@@ -24,7 +24,6 @@
 
 package erpsystem.view;
 
-
 import erpsystem.util.Variable;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

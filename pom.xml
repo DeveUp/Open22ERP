@@ -90,9 +90,9 @@
 			<artifactId>swtgraphics2d</artifactId>
 			<version>1.0</version>
 		</dependency>
-		<!--         -->
+		<!-- -->
 		<!-- JAVA FX -->
-		<!--         -->
+		<!-- -->
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-base</artifactId>
@@ -127,6 +127,14 @@
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-web</artifactId>
 			<version>16</version>
+		</dependency>
+		<!-- -->
+		<!-- FONT AWASOME -->
+		<!-- -->
+		<dependency>
+			<groupId>de.jensd</groupId>
+			<artifactId>fontawesomefx</artifactId>
+			<version>8.2</version>
 		</dependency>
 	</dependencies>
 </project>
