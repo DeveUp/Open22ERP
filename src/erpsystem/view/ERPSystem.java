@@ -29,7 +29,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -45,13 +44,13 @@ public class ERPSystem extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/erpSystemFXML.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.setResizable(true);
         stage.setTitle(Variable.ERP_SYSTEM_NAME);
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("LOGO.png")));
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("LOGO.png")));
         stage.show();
     }
 
