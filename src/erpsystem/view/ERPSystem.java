@@ -47,8 +47,8 @@ public class ERPSystem extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/erpSystemFXML.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setMaximized(true);
-        stage.setResizable(true);
+        stage.setMaximized(false);
+        stage.setResizable(false);
         stage.setTitle(Variable.ERP_SYSTEM_NAME);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("LOGO.png")));
         stage.show();
