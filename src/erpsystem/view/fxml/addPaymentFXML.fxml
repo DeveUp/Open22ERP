@@ -14,13 +14,13 @@
             <Group layoutY="55.0">
                <children>
                   <Label layoutY="4.0" text="Forma de pago" />
-                  <TextField fx:id="addFormaDePago" layoutX="87.0" prefHeight="25.0" prefWidth="465.0" />
+                  <TextField fx:id="addWayToPay" layoutX="87.0" prefHeight="25.0" prefWidth="465.0" />
                </children>
             </Group>
             <Group layoutY="98.0">
                <children>
                   <Label layoutY="4.0" text="Limite de dias" />
-                  <TextField fx:id="addLimiteDiasPago" layoutX="87.0" prefHeight="25.0" prefWidth="465.0" />
+                  <TextField fx:id="addDaysPaidLimit" layoutX="87.0" prefHeight="25.0" prefWidth="465.0" />
                </children>
             </Group>
             <Button fx:id="BotonPago" layoutX="253.0" layoutY="137.0" mnemonicParsing="false" text="Pagar" />
