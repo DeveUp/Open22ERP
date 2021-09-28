@@ -21,39 +21,42 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package erpsystem.forms;
+
+package erpsystem.view;
+
+
+import erpsystem.util.Variable;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 /**
- *
- * @author Diego
+ * @project Open22ERP.
+ * @author Diego Geronimo Onofre.
+ * @channel https://www.youtube.com/user/cursostd.
+ * @facebook https://www.facebook.com/diegogeronimoonofre.
+ * @Github https://github.com/DiegoGeronimoOnofre.
+ * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
+ * @version 2.0.0.
  */
-public abstract class XConsultaProdutoView extends ConsultaProdutoView
-{
-    public XConsultaProdutoView(java.awt.Frame f, boolean modal)
-    {
-        super(f,modal);
-    }
-    
+public class ERPSystem extends Application {
+
     @Override
-    public void afterConstruct()
-    {
-        javax.swing.JTable tb = getTblProds();
-        tb.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mouseClickEvent(evt);
-            }
-        });        
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/FXMLDocument.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.setResizable(true);
+        stage.setTitle(Variable.ERP_SYSTEM_NAME);
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("LOGO.png")));
+        stage.show();
     }
-    
-    private void mouseClickEvent(java.awt.event.MouseEvent me)
-    {
-        javax.swing.JTable tb = getTblProds();
-        final int row = tb.getSelectedRow();
-        int code = (int) tb.getModel().getValueAt(row, COD_PROD);
-        this.setVisible(false);
-        chosenCode(code);
+
+    public static void main(String[] args) {
+        launch(args);
     }
-    
-    protected abstract void chosenCode(int code);
 }

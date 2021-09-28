@@ -46,7 +46,7 @@ public class Log implements Serializable{
     
     private static void persist(Exception e)
     {
-        String path = erpsystem.ERPSystem.getWorkDir();
+        String path = Variable.ERP_SYSTEM_PROJECT_PATH;
         final char sep = File.separatorChar;
         File logDir = new File(path + sep + "logs");
         if ( !logDir.exists() ){

@@ -16,6 +16,7 @@ public class Variable implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	public static final String ERP_SYSTEM_NAME = "Open22ERP";
+	public static final String ERP_SYSTEM_PROJECT_PATH =  System.getProperty("user.dir");
 	
 	public static final String ERP_SYSTEM_DB_DRIVER = "com.mysql.jdbc.Driver";
 	public static final String ERP_SYSTEM_DB_NAME = "db";
