@@ -1,18 +1,19 @@
 *{
 	-fx-variable-font-family: "Verdana";
-	-fx-variable-font-size: 16px;
+	-fx-variable-font-size: 30;
+	
 	-fx-variable-primary: #334756;
-	-fx-variable-primary-color: #FFF;
+	-fx-variable-primary-color: #FFFF;
+	
 	-fx-variable-secundary: #F0A500;
-	-fx-variable-secundary-color: #000000;
+	-fx-variable-secundary-color: #FFFF;
+	
 	-fx-variable-disabled: #f5f5f5;
 }
 
 .menu__container-items {
 	-fx-background-color: -fx-variable-primary;
-	-fx-font-size: -fx-variable-font-size;
 	-fx-font-family: -fx-variable-font-family;
-	-fx-color: -fx-variable-primary-color;
 }
 
 .menu__container-items-container-icon{
@@ -20,16 +21,26 @@
 }
 
 .button-menu,
-.button-menu-info,
 .button-menu:hover{
 	-fx-background-color: transparent;
+	-fx-text-fill: -fx-variable-primary-color;
 }
 
 .button-menu-info,
 .button-menu-info:hover{
 	-fx-background-color: -fx-variable-secundary;
-	-fx-color: -fx-variable-secundary-color;
+	-fx-text-fill: -fx-variable-secundary-color;
+	-fx-font-weight: bold;
 }
+
+.button-menu,
+.button-menu:hover,
+.button-menu-info,
+.button-menu-info:hover{
+	-fx-font-size: 15px;
+	-fx-font-family: -fx-variable-font-family;
+}
+
 
 .container-main{
 	-fx-width: 900px;

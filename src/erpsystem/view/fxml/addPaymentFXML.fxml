@@ -23,7 +23,7 @@
                   <TextField fx:id="addDaysPaidLimit" layoutX="87.0" prefHeight="25.0" prefWidth="465.0" />
                </children>
             </Group>
-            <Button fx:id="addPaymentButton" layoutX="253.0" layoutY="137.0" mnemonicParsing="false" text="Pagar" />
+            <Button fx:id="BotonPago" layoutX="253.0" layoutY="137.0" mnemonicParsing="false" text="Pagar" />
          </children>
       </Group>
    </children>
