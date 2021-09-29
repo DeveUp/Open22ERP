@@ -8,53 +8,49 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Group layoutX="14.0" layoutY="19.0">
-         <children>
-            <Group layoutX="1.0">
-               <children>
-                  <Label layoutX="1.0" text="Nombre Persona" />
-                  <Button fx:id="addButtonmovements" layoutX="157.0" layoutY="21.0" mnemonicParsing="false" text="Buscar" />
-                  <TextField layoutY="21.0" />
-               </children>
-            </Group>
-            <Group layoutX="2.0" layoutY="325.0">
-               <children>
-                  <Label text="Movimiento de Productos" />
-                  <TableView layoutY="26.0" prefHeight="200.0" prefWidth="569.0">
-                    <columns>
-                      <TableColumn prefWidth="120.0" text="Codigo" />
-                      <TableColumn minWidth="6.0" prefWidth="116.0" text="Descripcion" />
-                        <TableColumn prefWidth="122.0" text="Cantidad" />
-                        <TableColumn prefWidth="105.0" text="Valor Unidad" />
-                        <TableColumn prefWidth="105.0" text="Total" />
-                    </columns>
-                  </TableView>
-               </children>
-            </Group>
-            <Group layoutX="433.0" layoutY="558.0">
-               <children>
-                  <Label layoutX="97.0" text="R$ 0.00" />
-                  <Label text="Total General:" />
-               </children>
-            </Group>
-            <Group layoutY="77.0">
-               <children>
-                  <Label layoutX="2.0" text="Movimientos" />
-                  <TableView layoutY="17.0" prefHeight="200.0" prefWidth="569.0">
-                    <columns>
-                      <TableColumn prefWidth="112.0" text="Nombre Persona" />
-                      <TableColumn minWidth="7.0" prefWidth="107.0" text="Tipo" />
-                        <TableColumn prefWidth="114.0" text="Forma de Pago" />
-                        <TableColumn prefWidth="113.0" text="Fecha" />
-                        <TableColumn prefWidth="122.0" text="Hora" />
-                    </columns>
-                  </TableView>
-               </children>
-            </Group>
-         </children>
-      </Group>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="680.0" stylesheets="@../../../../target/resources/css/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="erpsystem.view.controller.MovementsFXMLController">
+	<children>
+		<Group layoutX="54.0" layoutY="63.0" AnchorPane.bottomAnchor="590.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="658.0" AnchorPane.topAnchor="63.0">
+			<children>
+				<Label layoutX="35.0" layoutY="2.0" styleClass="label-txt" text="Nombre Persona" />
+				<Button fx:id="addButtonFindPerson" layoutX="580.0" layoutY="79.0" mnemonicParsing="false" onAction="#onButtonFindPerson" styleClass="button-genric" text="Buscar" />
+				<TextField fx:id="findNamePersonMov" layoutX="35.0" layoutY="31.0" prefHeight="34.0" prefWidth="612.0" />
+			</children>
+		</Group>
+		<Group AnchorPane.leftAnchor="460.0" AnchorPane.topAnchor="660.0">
+			<children>
+				<Label fx:id="findPriceMov" layoutX="97.0" styleClass="label-txt" text="R$ 0.00" />
+				<Label layoutX="-29.0" styleClass="label-txt" text="Total General:" />
+			</children>
+		</Group>
+		<Group AnchorPane.bottomAnchor="343.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="580.0" AnchorPane.topAnchor="180.0">
+			<children>
+				<Label layoutX="2.0" styleClass="label-txt" text="Movimientos" />
+				<TableView fx:id="findTableMovPerson" layoutY="25.0" onMouseClicked="#onClickMouseRowTableMovProduct" prefHeight="200.0" prefWidth="608.0">
+					<columns>
+						<TableColumn fx:id="findTableMovPersonCode" prefWidth="100.0" text="Codigo" />
+						<TableColumn fx:id="findTableMovPersonName" prefWidth="200.0" text="Nombre Persona" />
+						<TableColumn fx:id="findTableMovPersonType" minWidth="7.0" prefWidth="133.0" text="Tipo" />
+						<TableColumn fx:id="findTableMovPersonWayToPay" prefWidth="98.0" text="Forma de Pago" />
+						<TableColumn fx:id="findTableMovPersonDate" prefWidth="104.0" text="Fecha" />
+					</columns>
+				</TableView>
+			</children>
+		</Group>
+		<Group AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="580.0" AnchorPane.topAnchor="430.0">
+			<children>
+				<Label styleClass="label-txt" text="Movimiento de Productos" />
+				<TableView fx:id="findTableMovProduct" layoutY="25.0" prefHeight="200.0" prefWidth="609.0">
+					<columns>
+						<TableColumn fx:id="findTableMovProductCode" prefWidth="120.0" text="Codigo" />
+						<TableColumn fx:id="findTableMovProductDescription" minWidth="6.0" prefWidth="232.0" text="Descripcion" />
+						<TableColumn fx:id="findTableMovProductSize" prefWidth="63.0" text="Cantidad" />
+						<TableColumn fx:id="findTableMovProductPrice" prefWidth="91.0" text="Valor Unidad" />
+						<TableColumn fx:id="findTableMovProductTotal" prefWidth="102.0" text="Total" />
+					</columns>
+				</TableView>
+			</children>
+		</Group>
+		<Label alignment="CENTER" layoutX="1.0" layoutY="14.0" prefHeight="17.0" prefWidth="680.0" styleClass="title" text="COMPROBAR MOVIMIENTOS" />
+	</children>
 </AnchorPane>

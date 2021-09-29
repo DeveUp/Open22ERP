@@ -58,6 +58,7 @@ public class PersonFXMLController implements Initializable {
 	@SuppressWarnings("rawtypes")
 	@FXML
 	private TableView findTablePerson;
+	
 	@SuppressWarnings("rawtypes")
 	@FXML
 	private TableColumn findTablePersonCode;
@@ -166,7 +167,7 @@ public class PersonFXMLController implements Initializable {
 				isError = false;
 				message = "Se han filtrado "+ observable.size() + " personas.";
 			}else {
-				message = "No se ha encontrado ninguna person.";
+				message = "No se ha encontrado ninguna persona.";
 				findTablePerson.setItems(FXCollections.observableArrayList());
 			}
 		}else {

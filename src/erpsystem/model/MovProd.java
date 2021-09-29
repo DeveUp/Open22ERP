@@ -29,11 +29,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 import erpsystem.util.DB;
 import erpsystem.util.Log;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * @project Open22ERP.
@@ -102,8 +102,7 @@ public class MovProd implements Serializable{
         }
     }
     
-    public List<MovProd> findProds(int codMov)
-    {
+    public ObservableList<MovProd> findProds(int codMov){
         try{
             Connection con = DB.getConnection();
             Statement st = con.createStatement();
@@ -117,7 +116,7 @@ public class MovProd implements Serializable{
                           + "   AND mov_prod.cod_mov = " + codMov;
             
             ResultSet rs = st.executeQuery(update);
-            List<MovProd> mpList = new ArrayList<>();
+            ObservableList<MovProd> mpList = FXCollections.observableArrayList();
             while (rs.next()){
                 MovProd mp = new MovProd();   
                 mp.setCodProd(rs.getInt("codprod"));

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="342.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Group layoutX="42.0" layoutY="197.0">
+         <children>
+            <Label layoutX="336.0" layoutY="26.0" text="Año" />
+            <Label text="Fecha de Fin" />
+            <Label layoutX="174.0" layoutY="26.0" text="Mes" />
+            <Label layoutY="26.0" text="Dia" />
+            <ComboBox fx:id="addGraphicEndDateDay" layoutY="43.0" prefHeight="25.0" prefWidth="150.0" />
+            <ComboBox fx:id="addGraphicEndDateMonth" layoutX="173.0" layoutY="43.0" prefWidth="150.0" />
+            <ComboBox fx:id="addGraphicEndDateYear" layoutX="336.0" layoutY="43.0" prefWidth="150.0" />
+         </children>
+      </Group>
+      <Group layoutX="38.0" layoutY="32.0">
+         <children>
+            <Label layoutX="168.0" layoutY="74.0" text="Mes" />
+            <Label layoutX="3.0" layoutY="47.0" text="Fecha de Inicio" />
+            <ComboBox fx:id="addGraphicStartDateMonth" layoutX="169.0" layoutY="91.0" prefWidth="150.0" />
+            <ComboBox fx:id="addDiaFechaInicioGraficDay" layoutX="3.0" layoutY="91.0" prefWidth="150.0" />
+            <ComboBox fx:id="addGraphicStartDateYear" layoutX="332.0" layoutY="91.0" prefWidth="150.0" />
+            <Label layoutX="332.0" layoutY="74.0" text="Año" />
+            <Label layoutX="3.0" layoutY="74.0" text="Dia" />
+         </children>
+      </Group>
+      <Button fx:id="addCreateChartButton" layoutX="41.0" layoutY="297.0" mnemonicParsing="false" text="Crear Grafico" />
+      <Separator layoutY="171.0" prefHeight="17.0" prefWidth="549.0" />
+      <Label layoutX="41.0" layoutY="24.0" text="Consultar Graficas" />
+   </children>
+</AnchorPane>

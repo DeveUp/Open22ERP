@@ -7,6 +7,7 @@ import erpsystem.model.Mov;
 import erpsystem.model.MovProd;
 import erpsystem.model.PessoaMov;
 import erpsystem.util.Variable;
+import javafx.collections.ObservableList;
 
 /**
  * @project Open22ERP.
@@ -49,7 +50,7 @@ public class MovController implements Serializable {
 		}
 	}
 	
-	public List<PessoaMov> findClientMov(String clientName){
+	public ObservableList<PessoaMov> findClientMov(String clientName){
     	Mov mv = new Mov();
         return mv.findClientMov(clientName);
     }
