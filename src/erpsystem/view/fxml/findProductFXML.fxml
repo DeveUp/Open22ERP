@@ -7,20 +7,32 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label layoutX="33.0" layoutY="41.0" text="Descripcion" />
-      <TableView fx:id="addFindProductoTabla" layoutX="33.0" layoutY="179.0" prefHeight="488.0" prefWidth="594.0">
-        <columns>
-          <TableColumn fx:id="addFindProductoTablaCodigo" prefWidth="69.0" text="Codigo" />
-          <TableColumn fx:id="addFindProductoTablaCodigoBarras" prefWidth="100.0" text="Codigo Barras" />
-            <TableColumn fx:id="addFindProductoTablaDescripcion" prefWidth="125.0" text="Descripcion" />
-            <TableColumn fx:id="addFindProductoTablaPrecioCompra" prefWidth="100.0" text="Precio Compra" />
-            <TableColumn fx:id="addFindProductoTablaPrecioVenta" prefWidth="100.0" text="Precio Venta" />
-            <TableColumn fx:id="addFindProductoTablaInventario" prefWidth="100.0" text="Inventario" />
-        </columns>
-      </TableView>
-      <Button fx:id="addFindPersonNombrePersonaBuscar" layoutX="33.0" layoutY="116.0" mnemonicParsing="false" text="Buscar" />
-      <TextField layoutX="33.0" layoutY="68.0" prefHeight="25.0" prefWidth="594.0" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
+	prefWidth="680.0" xmlns="http://javafx.com/javafx/16"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="erpsystem.view.controller.ProductFXMLController">
+	<children>
+		<Label layoutX="33.0" layoutY="41.0" text="Descripcion" />
+		<TableView fx:id="findProductTable" layoutX="33.0"
+			layoutY="179.0" prefHeight="488.0" prefWidth="594.0">
+			<columns>
+				<TableColumn fx:id="findProductTableCode"
+					prefWidth="69.0" text="Codigo" />
+				<TableColumn fx:id="findProductTableBarCode"
+					prefWidth="100.0" text="Codigo Barras" />
+				<TableColumn fx:id="findProductTableDescription"
+					prefWidth="125.0" text="Descripcion" />
+				<TableColumn fx:id="findProductTablePriceBuy"
+					prefWidth="100.0" text="Precio Compra" />
+				<TableColumn fx:id="findProductTablePriceSale"
+					prefWidth="100.0" text="Precio Venta" />
+			</columns>
+		</TableView>
+		<Button fx:id="findButttonProduct" layoutX="33.0"
+			onAction="#onButtonFind"
+			layoutY="116.0" mnemonicParsing="false" text="Buscar" />
+		<TextField layoutX="33.0" layoutY="68.0" prefHeight="25.0"
+			prefWidth="594.0" fx:id="findDescriptionProduct" />
+	</children>
 </AnchorPane>

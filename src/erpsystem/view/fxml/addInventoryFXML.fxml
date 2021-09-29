@@ -9,7 +9,9 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
 	minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
 	prefWidth="600.0" xmlns="http://javafx.com/javafx/16"
-	xmlns:fx="http://javafx.com/fxml/1">
+	xmlns:fx="http://javafx.com/fxml/1"
+	stylesheets="@../../../../target/resources/css/style.css"
+	fx:controller="erpsystem.view.controller.AddInventoryFXMLController">
 	<children>
 		<Label alignment="CENTER" layoutY="23.0" prefHeight="28.0"
 			prefWidth="600.0" text="REGISTAR STOCK" />
@@ -24,6 +26,7 @@
 		<TextField fx:id="addStockSize" layoutX="24.0"
 			layoutY="188.0" prefHeight="25.0" prefWidth="309.0" />
 		<Button fx:id="addStockButton" layoutX="268.0" layoutY="277.0"
-			mnemonicParsing="false" text="Registrar" />
+			mnemonicParsing="false" text="Registrar" 
+			onAction="#onButtonRegister"/>
 	</children>
 </AnchorPane>

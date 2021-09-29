@@ -24,32 +24,36 @@ import javafx.scene.control.TextField;
  * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  * @version 2.0.0.
  */
-public class AddPersonFXMLController implements Initializable {
+public class PersonFXMLController implements Initializable {
 	
 	
+	///////////////////////////////////////////////////////
+	// Add
+	///////////////////////////////////////////////////////
 	@FXML
 	private TextField addNamePerson;
-	
 	@FXML
 	private TextField addDocumentPerson;
-	
 	@FXML 
 	private TextField addMailPerson;
-	
 	@FXML
 	private TextField addPhonePerson;
-	
 	@FXML
 	private TextField addDirectionPerson;
-	
 	
 	@FXML
 	private Button addButtonPerson;
 	
 	///////////////////////////////////////////////////////
+	// Fied
+	///////////////////////////////////////////////////////
+	
+	
+	
+	///////////////////////////////////////////////////////
 	// Build
 	///////////////////////////////////////////////////////
-	public AddPersonFXMLController() {
+	public PersonFXMLController() {
 	}
 	
 	///////////////////////////////////////////////////////

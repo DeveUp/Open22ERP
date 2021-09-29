@@ -33,6 +33,8 @@ import java.util.List;
 
 import erpsystem.util.DB;
 import erpsystem.util.Log;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * @project Open22ERP.
@@ -142,7 +144,7 @@ public class Product implements Serializable{
         }
     }
     
-    public List<Product> findProd(String desc){
+    public ObservableList<Product> findProd(String desc){
         try{
             Connection con = DB.getConnection();
             Statement st = con.createStatement();
@@ -155,7 +157,7 @@ public class Product implements Serializable{
                           + " WHERE UPPER(trim(produtos.descricao)) LIKE '%" + desc.trim().toUpperCase() + "%'";
             
             ResultSet rs = st.executeQuery(update);
-            List<Product> prodList = new ArrayList<>();
+            ObservableList<Product> prodList = FXCollections.observableArrayList();
             while (rs.next()){
                 Product prod = new Product();             
                 prod.setCodigo(rs.getInt("cod"));

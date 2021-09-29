@@ -79,13 +79,13 @@ public class MovProd implements Serializable{
                           + ")";   
             st.executeUpdate(update);
             //Atualizando o estoque.
-            Estoque estoque = new Estoque();
+            Inventory estoque = new Inventory();
             estoque.setCodProd(movProd.getCodProd());
             if ( movType == 1 ) //compra
                 estoque.setQt(movProd.getQt());
             else //venda
                 estoque.setQt(-movProd.getQt());
-             Estoque et = new Estoque();
+             Inventory et = new Inventory();
             boolean result = et.add(estoque);    
             if ( result ){
                 con.commit();

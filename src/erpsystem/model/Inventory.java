@@ -41,7 +41,7 @@ import erpsystem.util.Log;
  * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  * @version 2.0.0.
  */
-public class Estoque implements Serializable{
+public class Inventory implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -51,11 +51,11 @@ public class Estoque implements Serializable{
 	///////////////////////////////////////////////////////
 	// Builders
 	///////////////////////////////////////////////////////
-    public Estoque() {
+    public Inventory() {
     	this(-1, -1);
 	}
     
-	public Estoque(int codProd, int qt) {
+	public Inventory(int codProd, int qt) {
 		this.codProd = codProd;
 		this.qt = qt;
 	}
@@ -63,7 +63,7 @@ public class Estoque implements Serializable{
 	///////////////////////////////////////////////////////
 	// Method
 	///////////////////////////////////////////////////////
-    public boolean add(Estoque estoque)
+    public boolean add(Inventory estoque)
     {
         this.codProd = estoque.getCodProd();
         int qt = estoque.getQt();       
@@ -82,7 +82,7 @@ public class Estoque implements Serializable{
         }
         catch ( SQLException e ){
             try{
-                Estoque et = find(codProd);
+                Inventory et = find(codProd);
                 if (et != null ){
                     Boolean exists = exists(codProd);
                     if ( exists != null){
@@ -115,7 +115,7 @@ public class Estoque implements Serializable{
         return false;
     }  
     
-    public Estoque find(int code)
+    public Inventory find(int code)
     {
         try{
             Connection con = DB.getConnection();

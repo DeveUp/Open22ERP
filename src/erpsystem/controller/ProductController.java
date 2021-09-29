@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import erpsystem.model.Product;
+import javafx.collections.ObservableList;
 
 /**
  * @project Open22ERP.
@@ -42,7 +43,7 @@ public class ProductController implements Serializable{
 		return productModel.find(code);
 	}
 	
-	public List<Product> findProd(String desc){
+	public ObservableList<Product> findProd(String desc){
 		Product productModel = new Product();
 		return productModel.findProd(desc);
 	}
