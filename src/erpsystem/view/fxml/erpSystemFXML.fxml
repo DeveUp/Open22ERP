@@ -57,9 +57,12 @@
 				<JFXButton graphicTextGap="10.0" layoutY="525.0"
 					prefHeight="46.0" prefWidth="174.0" 
 					styleClass="button-menu-info" text="  ESTADISTICAS" />
+					
 				<JFXButton layoutY="571.0" prefHeight="46.0"
+					onAction="#onButtonEstadisticInterval"
 					prefWidth="222.0" styleClass="button-menu" text="Intervalo" />
-				<JFXButton layoutY="617.0" prefHeight="46.0"
+				<JFXButton layoutY="617.0" prefHeight="46.0" 
+					onAction="#onButtonEstadisticDay"
 					prefWidth="222.0" styleClass="button-menu" text="Dia" />
 				<BorderPane layoutX="15.0" layoutY="120.0"
 					prefHeight="28.0" prefWidth="22.0" />

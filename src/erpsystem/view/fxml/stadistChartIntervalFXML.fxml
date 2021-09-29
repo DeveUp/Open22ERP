@@ -6,15 +6,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <BarChart layoutX="51.0" layoutY="30.0" prefHeight="370.0" prefWidth="498.0">
-        <xAxis>
-          <CategoryAxis label="Ingreso" side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis label="Valor R" side="LEFT" />
-        </yAxis>
-      </BarChart>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+	prefWidth="600.0" xmlns="http://javafx.com/javafx/16"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="erpsystem.view.controller.StadistFXMLController">
+	<children>
+		<BarChart layoutX="51.0" layoutY="30.0" prefHeight="370.0"
+			prefWidth="498.0" fx:id="stadistChartInterval">
+			<xAxis>
+				<CategoryAxis label="Ingreso" side="BOTTOM" />
+			</xAxis>
+			<yAxis>
+				<NumberAxis label="Valor R" side="LEFT" />
+			</yAxis>
+		</BarChart>
+	</children>
 </AnchorPane>

@@ -105,7 +105,24 @@ public class ERPFXMLController implements Initializable {
 	@FXML
 	public void onButtonFindMov(ActionEvent event) {
 		try {
-			containerChange = Util.loadViewFXML(containerChange, getClass().getResource("../fxml/findWayToPayFXML.fxml"));
+			containerChange = Util.loadViewFXML(containerChange, getClass().getResource("../fxml/findCheckMovementsFXML.fxml"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	///////////////////////////////////////////////////////
+	// Method - Println - Stadistic
+	///////////////////////////////////////////////////////
+	@FXML
+	public void onButtonEstadisticInterval(ActionEvent event) {
+		
+	}
+	
+	@FXML
+	public void onButtonEstadisticDay(ActionEvent event) {
+		try {
+			containerChange = Util.loadViewFXML(containerChange, getClass().getResource("../fxml/stadistChartDayFXML.fxml"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

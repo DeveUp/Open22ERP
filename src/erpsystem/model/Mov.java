@@ -34,6 +34,8 @@ import java.util.List;
 
 import erpsystem.util.DB;
 import erpsystem.util.Log;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * @project Open22ERP.
@@ -122,7 +124,7 @@ public class Mov implements Serializable{
         }
     }
     
-    public List<PessoaMov> findClientMov(String pessoa)
+    public ObservableList<PessoaMov> findClientMov(String pessoa)
     {
         try{
             Connection con = DB.getConnection();
@@ -137,7 +139,7 @@ public class Mov implements Serializable{
                           + "   AND upper(trim(pessoas.nome)) LIKE '%" + pessoa.trim().toUpperCase() + "%'"
                           + " ORDER BY mov.mov_time";
             ResultSet rs = st.executeQuery(update);
-            List<PessoaMov> cmList = new ArrayList<>();
+            ObservableList<PessoaMov> cmList = FXCollections.observableArrayList();
             while (rs.next()){
                 PessoaMov cm = new PessoaMov();
                 cm.setMovCod(rs.getInt("codmov"));
