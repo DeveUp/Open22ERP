@@ -10,7 +10,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
 	minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
 	prefWidth="680.0" xmlns="http://javafx.com/javafx/16"
-	xmlns:fx="http://javafx.com/fxml/1" fx:controller="Find"
+	xmlns:fx="http://javafx.com/fxml/1"
 	stylesheets="@../../../../target/resources/css/style.css"
 	fx:controller="erpsystem.view.controller.PersonFXMLController">
 	<children>
