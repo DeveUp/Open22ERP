@@ -11,7 +11,7 @@
 	prefWidth="680.0"
 	stylesheets="@../../../../target/resources/css/style.css"
 	xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="erpsystem.view.controller.AddProdutFXMLController">
+	fx:controller="erpsystem.view.controller.ProductFXMLController">
 	<children>
 		<TextField fx:id="addCodeBarraProduct" layoutX="38.0"
 			layoutY="185.0" prefHeight="34.0" prefWidth="582.0" />

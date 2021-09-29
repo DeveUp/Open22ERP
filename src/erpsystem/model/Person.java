@@ -29,11 +29,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 import erpsystem.util.DB;
 import erpsystem.util.Log;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * @project Open22ERP.
@@ -134,7 +134,7 @@ public class Person implements Serializable{
         }
     }
     
-    public  List<Person> findClient(String clientName)
+    public  ObservableList<Person> findClient(String clientName)
     {
         try{
             Connection con = DB.getConnection();
@@ -149,7 +149,7 @@ public class Person implements Serializable{
                           + " WHERE UPPER(trim(pessoas.nome)) LIKE '%" + clientName.trim().toUpperCase() + "%'";
             
             ResultSet rs = st.executeQuery(update);
-            List<Person> cliList = new ArrayList<>();
+            ObservableList<Person> cliList = FXCollections.observableArrayList();
             while (rs.next()){    
                 Person cli = new Person();
                 cli.setCodigo(rs.getInt("cod"));

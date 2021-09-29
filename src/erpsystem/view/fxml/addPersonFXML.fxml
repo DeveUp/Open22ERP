@@ -8,7 +8,7 @@
 
 <Group xmlns="http://javafx.com/javafx/16"
 	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="erpsystem.view.controller.AddPersonFXMLController">
+	fx:controller="erpsystem.view.controller.PersonFXMLController">
 	<children>
 		<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
 			minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"

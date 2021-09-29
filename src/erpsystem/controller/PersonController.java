@@ -1,9 +1,9 @@
 package erpsystem.controller;
 
 import java.io.Serializable;
-import java.util.List;
 
 import erpsystem.model.Person;
+import javafx.collections.ObservableList;
 
 /**
  * @project Open22ERP.
@@ -41,7 +41,7 @@ public class PersonController implements Serializable{
         return cli.add(cli);
     }
 	
-	public List<Person> findClient(String name) {
+	public ObservableList<Person> findClient(String name) {
 		Person pessoaModel = new Person();
 		return pessoaModel.findClient(name);
 	}

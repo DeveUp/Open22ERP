@@ -2,7 +2,7 @@ package erpsystem.controller;
 
 import java.io.Serializable;
 
-import erpsystem.model.Estoque;
+import erpsystem.model.Inventory;
 
 /**
  * @project Open22ERP.
@@ -13,27 +13,27 @@ import erpsystem.model.Estoque;
  * @contributors SerBuitrago, yadirGarcia, soleimygomez, leynerjoseoa.
  * @version 2.0.0.
  */
-public class EstoqueController implements Serializable{
+public class InventoryController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	///////////////////////////////////////////////////////
 	// Builders
 	///////////////////////////////////////////////////////
-	public EstoqueController() {
+	public InventoryController() {
 	}
 	
 	///////////////////////////////////////////////////////
 	// Method
 	///////////////////////////////////////////////////////
-	public Estoque find(int code) {
-		Estoque et = new Estoque();
+	public Inventory find(int code) {
+		Inventory et = new Inventory();
 		et.find(code);
 		return et;
 	}
 	
-	public boolean add(Estoque estoque) {
-		Estoque et = new Estoque();
+	public boolean add(Inventory estoque) {
+		Inventory et = new Inventory();
 		return et.add(estoque);
 	}
 }
