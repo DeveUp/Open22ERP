@@ -8,31 +8,51 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label layoutX="42.0" layoutY="29.0" text="Codigo de persona" />
-      <Label layoutX="436.0" layoutY="91.0" text="Tipo" />
-      <Label layoutX="40.0" layoutY="92.0" text="Codigo de prodcuto" />
-      <Label layoutX="436.0" layoutY="34.0" text="Metodo de pago" />
-      <Button fx:id="addMovimientoCodigoPersonaAgregar" layoutX="216.0" layoutY="43.0" mnemonicParsing="false" text="+" />
-      <Button fx:id="addMovimientoCodigoProductoAgregar" layoutX="216.0" layoutY="111.0" mnemonicParsing="false" text="+" />
-      <Label layoutX="40.0" layoutY="160.0" text="Cantidad" />
-      <Label layoutX="185.0" layoutY="160.0" text="Valor unitario" />
-      <Button fx:id="addMovimientoAgregarProdcuto" layoutX="430.0" layoutY="189.0" mnemonicParsing="false" text="Agregar producto +" />
-      <ComboBox fx:id="addMovimientoMetodoPago" layoutX="436.0" layoutY="50.0" prefHeight="28.0" prefWidth="150.0" />
-      <ComboBox fx:id="addMovimientoTipo" layoutX="436.0" layoutY="112.0" prefWidth="150.0" />
-      <Label layoutX="33.0" layoutY="245.0" text="PRODUCTOS DE MOVIMIENTO" />
-      <TableView fx:id="addMovimientoTablaProdcutos" layoutX="33.0" layoutY="269.0" prefHeight="200.0" prefWidth="536.0">
-        <columns>
-          <TableColumn fx:id="addMovimientoTablaProdcutosCodigo" prefWidth="76.0" text="CODIGO" />
-            <TableColumn fx:id="addMovimientoTablaProdcutosDescripcion" prefWidth="200.0" text="DESCRIPCION" />
-            <TableColumn fx:id="addMovimientoTabalaProdcutosCantidad" prefWidth="67.0" text="CANTIDAD" />
-            <TableColumn fx:id="addMovimientoTablaProdcutosValorUnitario" prefWidth="100.0" text="C/U" />
-            <TableColumn fx:id="addMovimientoTablaProdcutosTotal" prefWidth="100.0" text="TOTAL" />
-        </columns>
-      </TableView>
-      <TextField layoutX="41.0" layoutY="56.0" />
-      <TextField layoutX="41.0" layoutY="112.0" />
-      <TextField layoutX="41.0" layoutY="189.0" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
+	prefWidth="600.0" xmlns="http://javafx.com/javafx/16"
+	xmlns:fx="http://javafx.com/fxml/1"
+	stylesheets="@../../../../target/resources/css/style.css"
+	fx:controller="erpsystem.view.controller.MovementsFXMLController">
+	<children>
+		<Label layoutX="42.0" layoutY="29.0" text="Codigo de persona" />
+		<Label layoutX="436.0" layoutY="91.0" text="Tipo" />
+		<Label layoutX="40.0" layoutY="92.0" text="Codigo de prodcuto" />
+		<Label layoutX="436.0" layoutY="34.0" text="Metodo de pago" />
+		<Button fx:id="addMovimientoCodigoPersonaAgregar"
+			layoutX="216.0" layoutY="43.0" mnemonicParsing="false" text="+" />
+		<Button fx:id="addMovimientoCodigoProductoAgregar"
+			layoutX="216.0" layoutY="111.0" mnemonicParsing="false" text="+" />
+		<Label layoutX="40.0" layoutY="160.0" text="Cantidad" />
+		<Label layoutX="185.0" layoutY="160.0" text="Valor unitario" />
+		<Button fx:id="addMovimientoAgregarProdcuto" layoutX="430.0"
+			layoutY="189.0" mnemonicParsing="false" text="Agregar producto +" />
+		<ComboBox fx:id="addMovimientoMetodoPago" layoutX="436.0"
+			layoutY="50.0" prefHeight="28.0" prefWidth="150.0" />
+		<ComboBox fx:id="addMovimientoTipo" layoutX="436.0"
+			layoutY="112.0" prefWidth="150.0" />
+		<Label layoutX="33.0" layoutY="245.0"
+			text="PRODUCTOS DE MOVIMIENTO" />
+		<TableView fx:id="addMovimientoTablaProdcutos"
+			layoutX="33.0" layoutY="269.0" prefHeight="200.0" prefWidth="536.0">
+			<columns>
+				<TableColumn fx:id="addMovimientoTablaProdcutosCodigo"
+					prefWidth="76.0" text="CODIGO" />
+				<TableColumn
+					fx:id="addMovimientoTablaProdcutosDescripcion" prefWidth="200.0"
+					text="DESCRIPCION" />
+				<TableColumn
+					fx:id="addMovimientoTabalaProdcutosCantidad" prefWidth="67.0"
+					text="CANTIDAD" />
+				<TableColumn
+					fx:id="addMovimientoTablaProdcutosValorUnitario" prefWidth="100.0"
+					text="C/U" />
+				<TableColumn fx:id="addMovimientoTablaProdcutosTotal"
+					prefWidth="100.0" text="TOTAL" />
+			</columns>
+		</TableView>
+		<TextField layoutX="41.0" layoutY="56.0" />
+		<TextField layoutX="41.0" layoutY="112.0" />
+		<TextField layoutX="41.0" layoutY="189.0" />
+	</children>
 </AnchorPane>

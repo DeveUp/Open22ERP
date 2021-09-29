@@ -9,6 +9,7 @@
 <AnchorPane prefHeight="700.0" prefWidth="900.0"
 	styleClass="container-main" xmlns="http://javafx.com/javafx/16"
 	xmlns:fx="http://javafx.com/fxml/1"
+	stylesheets="@../../../../target/resources/css/style.css"
 	fx:controller="erpsystem.view.controller.ERPFXMLController">
 	<children>
 		<AnchorPane prefHeight="700.0" prefWidth="222.0"

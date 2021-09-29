@@ -8,7 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class AddMovimientaFXMLController {
+public class MovementsFXMLController {
 	
 	@FXML
 	private TextField addMovimientoCodigoPersona;
