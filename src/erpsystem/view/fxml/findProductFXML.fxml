@@ -12,11 +12,11 @@
 		<Label layoutX="37.0" layoutY="106.0" styleClass="label-txt" text="Descripcion" />
 		<TableView fx:id="findProductTable" layoutX="37.0" layoutY="227.0" prefHeight="446.0" prefWidth="607.0">
 			<columns>
-				<TableColumn fx:id="findProductTableCode" prefWidth="69.0" text="Codigo" />
-				<TableColumn fx:id="findProductTableBarCode" prefWidth="100.0" text="Codigo Barras" />
+				<TableColumn fx:id="findProductTableCode" prefWidth="100.0" text="Codigo" />
+				<TableColumn fx:id="findProductTableBarCode" prefWidth="150.0" text="Codigo Barras" />
 				<TableColumn fx:id="findProductTableDescription" prefWidth="240.0" text="Descripcion" />
-				<TableColumn fx:id="findProductTablePriceBuy" prefWidth="100.0" text="Precio Compra" />
-				<TableColumn fx:id="findProductTablePriceSale" prefWidth="100.0" text="Precio Venta" />
+				<TableColumn fx:id="findProductTablePriceBuy" prefWidth="200.0" text="Precio Compra" />
+				<TableColumn fx:id="findProductTablePriceSale" prefWidth="200.0" text="Precio Venta" />
 			</columns>
 		</TableView>
 		<Button fx:id="findButttonProduct" layoutX="504.0" layoutY="184.0" mnemonicParsing="false" onAction="#onButtonFind" prefHeight="34.0" prefWidth="140.0" styleClass="button-genric" text="Buscar" />

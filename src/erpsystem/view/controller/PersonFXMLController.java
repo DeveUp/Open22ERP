@@ -7,12 +7,17 @@ import erpsystem.controller.PersonController;
 import erpsystem.model.Person;
 import erpsystem.util.Util;
 import erpsystem.util.Variable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 /**
@@ -47,7 +52,33 @@ public class PersonFXMLController implements Initializable {
 	///////////////////////////////////////////////////////
 	// Fied
 	///////////////////////////////////////////////////////
+	@FXML
+	private TextField findNamePerson;
 	
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableView findTablePerson;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn findTablePersonCode;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn findTablePersonName;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn findTablePersonCC;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn findTablePersonMail;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn findTablePersonLocation;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn findTablePersonPhone;
+	
+	@FXML
+	private Button findButttonPerson;
 	
 	
 	///////////////////////////////////////////////////////
@@ -116,6 +147,37 @@ public class PersonFXMLController implements Initializable {
 		a.show();
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@FXML
+	public void onButtonFind(ActionEvent event) {
+		String message = "";
+		boolean isError = true;
+		if(Util.isChain(findNamePerson.getText())) {
+			PersonController personController = new PersonController();
+			ObservableList<Person> observable = personController.findClient(findNamePerson.getText()); 
+			if(observable.size() > 0) {
+				findTablePersonCode.setCellValueFactory(new PropertyValueFactory("codigo"));
+				findTablePersonName.setCellValueFactory(new PropertyValueFactory("nome"));
+				findTablePersonCC.setCellValueFactory(new PropertyValueFactory("cpf"));
+				findTablePersonMail.setCellValueFactory(new PropertyValueFactory("email"));
+				findTablePersonLocation.setCellValueFactory(new PropertyValueFactory("localizacao"));
+				findTablePersonPhone.setCellValueFactory(new PropertyValueFactory("telefone"));
+				findTablePerson.setItems(observable);
+				isError = false;
+				message = "Se han filtrado "+ observable.size() + " personas.";
+			}else {
+				message = "No se ha encontrado ninguna person.";
+				findTablePerson.setItems(FXCollections.observableArrayList());
+			}
+		}else {
+			message = "No has digitado el nombre de la persona.";
+		}
+		Alert a = new Alert((isError) ? AlertType.WARNING : AlertType.CONFIRMATION);
+		a.setTitle(Variable.ERP_SYSTEM_NAME);
+		a.setContentText(message);
+		a.show();
+	}
+	
 	///////////////////////////////////////////////////////
 	// Getter and Setters
 	///////////////////////////////////////////////////////
@@ -153,6 +215,91 @@ public class PersonFXMLController implements Initializable {
 		return addPhonePerson;
 	}
 
+	public TextField getFindNamePerson() {
+		return findNamePerson;
+	}
+
+	public void setFindNamePerson(TextField findNamePerson) {
+		this.findNamePerson = findNamePerson;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public TableView getFindTablePerson() {
+		return findTablePerson;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void setFindTablePerson(TableView findTablePerson) {
+		this.findTablePerson = findTablePerson;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public TableColumn getFindTablePersonCode() {
+		return findTablePersonCode;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void setFindTablePersonCode(TableColumn findTablePersonCode) {
+		this.findTablePersonCode = findTablePersonCode;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public TableColumn getFindTablePersonName() {
+		return findTablePersonName;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void setFindTablePersonName(TableColumn findTablePersonName) {
+		this.findTablePersonName = findTablePersonName;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public TableColumn getFindTablePersonCC() {
+		return findTablePersonCC;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void setFindTablePersonCC(TableColumn findTablePersonCC) {
+		this.findTablePersonCC = findTablePersonCC;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public TableColumn getFindTablePersonMail() {
+		return findTablePersonMail;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void setFindTablePersonMail(TableColumn findTablePersonMail) {
+		this.findTablePersonMail = findTablePersonMail;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public TableColumn getFindTablePersonLocation() {
+		return findTablePersonLocation;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void setFindTablePersonLocation(TableColumn findTablePersonLocation) {
+		this.findTablePersonLocation = findTablePersonLocation;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public TableColumn getFindTablePersonPhone() {
+		return findTablePersonPhone;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void setFindTablePersonPhone(TableColumn findTablePersonPhone) {
+		this.findTablePersonPhone = findTablePersonPhone;
+	}
+
+	public Button getFindButttonPerson() {
+		return findButttonPerson;
+	}
+
+	public void setFindButttonPerson(Button findButttonPerson) {
+		this.findButttonPerson = findButttonPerson;
+	}
 
 	public void setAddPhonePerson(TextField addPhonePerson) {
 		this.addPhonePerson = addPhonePerson;
