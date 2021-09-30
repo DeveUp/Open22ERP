@@ -2,6 +2,9 @@ package erpsystem.util;
 
 import java.io.Serializable;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 /**
  * @project Open22ERP.
  * @author Diego Geronimo Onofre.
@@ -32,4 +35,52 @@ public class Variable implements Serializable{
             									+ " não estava em execução ou seu sistema está corrompido. \n"
             									+ " é recomendável realizar a movimentação novamente, assim se \n"
             									+ "o problema persistir entre em contato com o Desenvolvedor.";
+	
+	public static final ObservableList<String> month(){
+		ObservableList<String> observableList = FXCollections.observableArrayList();
+		observableList.addAll(
+				"Enero", 
+				"Febrero", 
+				"Marzo", 
+				"Abril", 
+				"Mayo",
+				"Junio",
+				"Julio",
+				"Agosto",
+				"Septiembre",
+				"Octubre",
+				"Noviembre",
+				"Diciembre"
+		);
+		return observableList;
+	}
+	
+	public static final int month(String name){
+		ObservableList<String> observableList = month();
+		int i = 0;
+		for(String aux : observableList) {
+			if(aux.equalsIgnoreCase(name)) {
+				return i + 1;
+			}
+			i++;
+		}
+		return 0;
+	}
+	
+	public static final ObservableList<String> days(){
+		ObservableList<String> observableList = FXCollections.observableArrayList();
+		for(int i=1; i <=31; i++) {
+			observableList.add(""+i);
+		}
+		return observableList;
+	}
+	
+	public static final ObservableList<String> years(){
+		ObservableList<String> observableList = FXCollections.observableArrayList();
+		for(int i=1900; i <= 3000; i++) {
+			observableList.add(""+i);
+		}
+		return observableList;
+	}
+	
 }

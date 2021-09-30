@@ -1,8 +1,11 @@
 package erpsystem.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import erpsystem.model.WayToPay;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * @project Open22ERP.
@@ -29,5 +32,15 @@ public class WayToPayController implements Serializable{
 	public boolean add(WayToPay pay){
 		WayToPay wayToPayModel = new WayToPay();
 		return wayToPayModel.add(pay);
+	}
+	
+	public ObservableList<String> findAllName(){
+		ObservableList<String> observable = FXCollections.observableArrayList();
+		WayToPay wayToPay = new WayToPay();
+		List<WayToPay> list = wayToPay.findAll();
+		for(WayToPay aux: list) {
+			observable.add(aux.getDescricao());
+		}
+		return observable;
 	}
 }
