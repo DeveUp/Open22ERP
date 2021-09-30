@@ -162,7 +162,11 @@ public class ERPFXMLController implements Initializable {
 	///////////////////////////////////////////////////////
 	@FXML
 	public void onButtonEstadisticInterval(ActionEvent event) {
-		
+		try {
+			containerChange = Util.loadViewFXML(containerChange, getClass().getResource("../fxml/stadistChartIntervalFXML.fxml"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
